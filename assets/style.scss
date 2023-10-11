@@ -1,0 +1,55 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+Theme Name:  Morange - eCommerce HTML5 Template
+Version:        1.0.0
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+1. General
+----------------------------------------------------------------*/
+
+// helpers
+@import "variables";
+@import "functions";
+@import "mixins";
+
+// base
+@import "base";
+
+
+// components
+@import "section-title";
+@import "buttons";
+@import "form";
+@import "social-links";
+@import "page-title";
+@import "preloader";
+@import "pagination";
+@import "modal";
+
+// layout
+@import "header";
+@import "hero-slider";
+@import "footer";
+
+// components
+@import "sticky-header";
+
+// page
+@import "home-default";
+
+@import "listing";
+
+@import "product-single";
+
+@import "about";
+
+@import "privacy";
+
+@import "faq";
+
+@import "contact";
+
+
+
+

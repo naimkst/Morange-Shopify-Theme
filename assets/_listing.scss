@@ -1,0 +1,102 @@
+// listing
+
+.filter-area {
+    padding-bottom: 80px;
+    .filter-top {
+        border-bottom: 1px solid #BDBABE;
+        padding-bottom: 20px;
+
+        .filter-item-wrap {
+            display: flex;
+            flex-wrap: wrap;
+
+            @media(max-width:991px){
+                justify-content: center;
+            }
+
+            select {
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                text-transform: uppercase;
+                border: 0;
+                padding: 20px 30px;
+                -webkit-appearance: none;
+                -ms-appearance: none;
+                -o-appearance: none;
+                appearance: none;
+                -moz-appearance: none;
+                background: transparent url(../images/select-icon2.png) no-repeat calc(100% - 15px) center;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .filter-item {
+                &:first-child {
+                    select {
+                        padding-left: 0;
+                    }
+                }
+            }
+
+            &.right {
+                justify-content: flex-end;
+
+                @media(max-width:991px){
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .filter-result {
+        ul {
+            display: flex;
+            margin-top: 20px;
+
+            @media(max-width:991px){
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            li {
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                text-transform: uppercase;
+                padding: 10px;
+                border: 1px solid rgba(215, 215, 215, 0.60);
+                display: flex;
+                align-items: center;
+                margin-bottom: 5px;
+
+                i {
+                    margin-left: 10px;
+                }
+
+                &+li {
+                    margin-left: 15px;
+                }
+
+                span {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 5px;
+                }
+
+                &.clear {
+                    background: #EBE9EA;
+                    i {
+                        margin-left: 0;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

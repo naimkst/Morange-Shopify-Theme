@@ -1,0 +1,92 @@
+/*---------------------------
+	Fonts
+----------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+@font-face {
+  font-family: 'Balto';
+  src: url('./Balto-Light.eot');
+  src: local('./Balto Light'), local('Balto-Light'),
+    url('./Balto-Light.eot?#iefix') format('embedded-opentype'),
+    url('./Balto-Light.woff2') format('woff2'),
+    url('./Balto-Light.woff') format('woff'),
+    url('./Balto-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Balto';
+  src: url('./Balto-Book.eot');
+  src: local('./Balto Book'), local('Balto-Book'),
+      url('./Balto-Book.eot?#iefix') format('embedded-opentype'),
+      url('./Balto-Book.woff2') format('woff2'),
+      url('./Balto-Book.woff') format('woff'),
+      url('./Balto-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Balto';
+  src: url('./Balto-Ultra.eot');
+  src: local('Balto Ultra'), local('Balto-Ultra'),
+    url('./Balto-Ultra.eot?#iefix') format('embedded-opentype'),
+    url('./Balto-Ultra.woff2') format('woff2'),
+    url('./Balto-Ultra.woff') format('woff'),
+    url('./Balto-Ultra.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Balto';
+  src: url('./Balto-Medium.eot');
+  src: local('Balto Medium'), local('Balto-Medium'),
+    url('./Balto-Medium.eot?#iefix') format('embedded-opentype'),
+    url('./Balto-Medium.woff2') format('woff2'),
+    url('./Balto-Medium.woff') format('woff'),
+    url('./Balto-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Balto';
+  src: url('./Balto-Super.eot');
+  src: local('Balto Super'), local('Balto-Super'),
+    url('./Balto-Super.eot?#iefix') format('embedded-opentype'),
+    url('./Balto-Super.woff2') format('woff2'),
+    url('./Balto-Super.woff') format('woff'),
+    url('./Balto-Super.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+
+
+
+// fonts
+$base-font-size: 15;
+$base-font: 'Balto';
+$heading-font: 'Playfair Display';
+
+
+
+// color
+$dark-gray: #141416; //
+$body-color: #7F7F8A;
+$white: #fff;
+$light: #DDDDDD; //
+$black: #000;
+$small-black: #333;
+$cyan: #F9F9F9; //
+
+$theme-primary-color: #F87C56; //
+$body-bg-color: #fff;
+$section-bg-color: #F1E2CC; //
+$text-color: #7F7F8A; //
+$text-light-color: #6F6F6F; //
+$heading-color: $dark-gray;
+$border-color: #F0F0F0; //
+$border-color-s2: #F1E2CC; //
