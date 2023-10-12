@@ -1,10 +1,14 @@
 {
   "sections": {
     "image_banner": {
-      "type": "content"
+      "type": "hero-slider"
+    },
+    "category_section": {
+      "type": "category-section"
     }
   },
   "order": [
-    "image_banner"
+    "image_banner",
+    "category_section"
   ]
 }
