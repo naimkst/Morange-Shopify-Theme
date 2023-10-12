@@ -50,3 +50,26 @@
   </div>
 </section>
 <!-- end of category-section -->
+
+{% schema %}
+{
+  "name": "Category Section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "limit_category",
+      "label": "Category Limit",
+      "min": 3,
+      "max": 24,
+      "step": 1,
+      "unit": "col",
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Section"
+    }
+  ]
+}
+{% endschema %}
