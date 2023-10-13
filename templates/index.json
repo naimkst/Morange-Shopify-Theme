@@ -75,13 +75,6 @@
     "product_section": {
       "type": "product-section",
       "blocks": {
-        "69d93242-288d-4423-9255-bb586657a7f0": {
-          "type": "collection",
-          "settings": {
-            "feacture_collection": "automated-collection",
-            "tab_title": "NEW ARRIVALS"
-          }
-        },
         "e1793993-59d6-4c21-8be9-2a9aa90ac893": {
           "type": "collection",
           "settings": {
@@ -95,12 +88,19 @@
             "feacture_collection": "hydrogen",
             "tab_title": "DRESS"
           }
+        },
+        "69d93242-288d-4423-9255-bb586657a7f0": {
+          "type": "collection",
+          "settings": {
+            "feacture_collection": "automated-collection",
+            "tab_title": "NEW ARRIVALS"
+          }
         }
       },
       "block_order": [
-        "69d93242-288d-4423-9255-bb586657a7f0",
         "e1793993-59d6-4c21-8be9-2a9aa90ac893",
-        "2357a1e9-1c45-4fab-891d-4015293236c9"
+        "2357a1e9-1c45-4fab-891d-4015293236c9",
+        "69d93242-288d-4423-9255-bb586657a7f0"
       ],
       "settings": {
         "limit_product": 4,
