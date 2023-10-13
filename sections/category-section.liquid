@@ -3,8 +3,8 @@
   <div class="container">
     <div class="category-wrap">
       <div class="row">
-        {% assign limitData = section.settings.limit_category %}
-        {% for collection in collections limit: limitData %}
+        {% for block in section.blocks %}
+          {%- assign collection = collections[block.settings.category_list] -%}
           <div class="{% if forloop.index == 2 or forloop.index == 5  or forloop.index == 8 or forloop.index == 11 or forloop.index == 14 %}  col-lg-6 col-md-6 col-12 {% else %} col-lg-3 col-md-6 col-12 {% endif %}">
             <div class="category-img">
               <img class="catGridImg" src="{{ collection.image.src | collection_img_url: 'original'  }}" alt="">
@@ -29,21 +29,28 @@
 {% schema %}
 {
   "name": "Category Section",
-  "settings": [
+  "settings": [],
+  "blocks": [
     {
-      "type": "range",
-      "id": "limit_category",
-      "label": "Category Limit",
-      "min": 3,
-      "max": 24,
-      "step": 1,
-      "unit": "col",
-      "default": 3
+      "name": "Category List",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "category_list",
+          "label": "Collection"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Category Section"
+      "name": "Category Section",
+      "blocks": [
+        {
+          "type": "collection"
+        }
+      ]
     }
   ]
 }

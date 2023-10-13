@@ -15,20 +15,13 @@
             {% for block in section.blocks %}
               <li class="nav-item" role="presentation">
                 <button
-                  class="
-                    nav-link  {% if forloop.index == 1 %}
-                     active
-                    {% endif %}
-                  "
+                  class="nav-link  {% if forloop.index == 1 %} active {% endif %}"
                   onclick="openPage('tabs{{ forloop.index }}', this, 'nav-link active')"
-                  {% if forloop.index == 1 %}
-                    id="arrival-tab-{{ forloop.index }}"
-                  {% endif %}
                   data-bs-toggle="pill"
-                  data-bs-target="#arrival-{{ forloop.index }}"
+                  data-bs-target="#prd-tab-{{ forloop.index }}"
                   type="button"
                   role="tab"
-                  aria-controls="arrival-{{ forloop.index }}"
+                  aria-controls="prd-tab-{{ forloop.index }}"
                   aria-selected="true"
                 >
                   {{ block.settings.tab_title }}
@@ -51,12 +44,10 @@
                 show active
               {% endif %}
             "
-            {% if forloop.index == 1 %}
-              id="arrival-tab-{{ forloop.index }}"
-            {% endif %}
-            id="arrival-{{ forloop.index }}"
+
+            id="prd-tab-{{ forloop.index }}"
             role="tabpanel"
-            aria-labelledby="arrival-tab"
+            aria-labelledby="prd-tab-{{ forloop.index }}"
           >
             <div class="row">
               {% for product in collections[block.settings.feacture_collection].products %}
