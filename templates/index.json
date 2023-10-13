@@ -8,13 +8,36 @@
           "settings": {
             "hero_slug": "This month from $29",
             "hero_Title": "New Collection",
+            "hero_image": "shopify:\/\/shop_images\/p-banner.jpg",
+            "hero_url": "",
+            "hero_button_text": "Shop collection"
+          }
+        },
+        "1e8759c8-eed4-4df8-91ab-e23dcadcda68": {
+          "type": "heading",
+          "settings": {
+            "hero_slug": "This month from $29",
+            "hero_Title": "New Collection",
+            "hero_image": "shopify:\/\/shop_images\/theme_cover_image.jpg",
+            "hero_url": "",
+            "hero_button_text": "Shop collection"
+          }
+        },
+        "f49be8b6-fcac-41ff-849a-d6fa7f9c0b10": {
+          "type": "heading",
+          "settings": {
+            "hero_slug": "This month from $29",
+            "hero_Title": "New Collection",
+            "hero_image": "shopify:\/\/shop_images\/theme_cover_image.jpg",
             "hero_url": "",
             "hero_button_text": "Shop collection"
           }
         }
       },
       "block_order": [
-        "5888f342-58c7-4dc2-b21c-84fb064a31c1"
+        "5888f342-58c7-4dc2-b21c-84fb064a31c1",
+        "1e8759c8-eed4-4df8-91ab-e23dcadcda68",
+        "f49be8b6-fcac-41ff-849a-d6fa7f9c0b10"
       ],
       "settings": {
       }
