@@ -106,11 +106,42 @@
         "limit_product": 4,
         "view_all_product": ""
       }
+    },
+    "a0c70b29-e281-4481-a40c-dced19f58ff2": {
+      "type": "category-section",
+      "blocks": {
+        "template--21352289567002__a0c70b29-e281-4481-a40c-dced19f58ff2-collection-1": {
+          "type": "collection",
+          "settings": {
+            "category_list": "hydrogen"
+          }
+        },
+        "9473b7d7-b874-4e36-bdd1-1797e803c7c3": {
+          "type": "collection",
+          "settings": {
+            "category_list": "dresses"
+          }
+        },
+        "e7933475-8af8-4242-a77e-ef0999e27b66": {
+          "type": "collection",
+          "settings": {
+            "category_list": "tops"
+          }
+        }
+      },
+      "block_order": [
+        "template--21352289567002__a0c70b29-e281-4481-a40c-dced19f58ff2-collection-1",
+        "9473b7d7-b874-4e36-bdd1-1797e803c7c3",
+        "e7933475-8af8-4242-a77e-ef0999e27b66"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
     "image_banner",
     "category_section",
-    "product_section"
+    "product_section",
+    "a0c70b29-e281-4481-a40c-dced19f58ff2"
   ]
 }
