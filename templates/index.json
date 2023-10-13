@@ -161,6 +161,17 @@
           "the-collection-snowboard-hydrogen"
         ]
       }
+    },
+    "a973bad4-ac3a-4eac-b359-840e0636dd42": {
+      "type": "product-arrival",
+      "settings": {
+        "winter_slug": "New Arrival",
+        "winter_title": "WINTER Collection",
+        "winter_descripiton": "Lorem ipsum is simply dummy text of the printing typesetting industry. Lorem ipsum has been standard dummy text. Lorem ipsum has been standard.",
+        "winter_button_text": "Shop Now",
+        "banner_button_url": "",
+        "banner_image": "shopify:\/\/shop_images\/p-banner.jpg"
+      }
     }
   },
   "order": [
@@ -169,6 +180,7 @@
     "product_section",
     "a0c70b29-e281-4481-a40c-dced19f58ff2",
     "278aeb73-b785-4900-be1c-7387ed3d62ce",
-    "02278c90-5fcd-479a-ae8b-463cd4fbd19e"
+    "02278c90-5fcd-479a-ae8b-463cd4fbd19e",
+    "a973bad4-ac3a-4eac-b359-840e0636dd42"
   ]
 }
