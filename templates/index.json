@@ -147,6 +147,20 @@
           "the-multi-location-snowboard"
         ]
       }
+    },
+    "02278c90-5fcd-479a-ae8b-463cd4fbd19e": {
+      "type": "product-feature",
+      "settings": {
+        "banner_slug": "Shop By",
+        "banner_title": "Fall Dresses",
+        "banner_button_texr": "Shop Now",
+        "banner_button_url": "",
+        "banner_image": "shopify:\/\/shop_images\/p-banner.jpg",
+        "featured_products": [
+          "the-3p-fulfilled-snowboard",
+          "the-collection-snowboard-hydrogen"
+        ]
+      }
     }
   },
   "order": [
@@ -154,6 +168,7 @@
     "category_section",
     "product_section",
     "a0c70b29-e281-4481-a40c-dced19f58ff2",
-    "278aeb73-b785-4900-be1c-7387ed3d62ce"
+    "278aeb73-b785-4900-be1c-7387ed3d62ce",
+    "02278c90-5fcd-479a-ae8b-463cd4fbd19e"
   ]
 }
