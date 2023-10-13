@@ -5,10 +5,14 @@
     },
     "category_section": {
       "type": "category-section"
+    },
+     "product_section": {
+      "type": "product-section"
     }
   },
   "order": [
     "image_banner",
-    "category_section"
+    "category_section",
+    "product_section"
   ]
 }

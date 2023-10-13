@@ -91,19 +91,20 @@
                           width=""
                           height=""
                         >
-                        <div class="tag">
-                          <i
-                            ><img
-                              src="assets/images/product/tag.svg"
-                              alt=""
-                              loading="eager"
-                              width=""
-                              height=""
-                          ></i>
-                          {% if product.metafields.custom.discount %}
+                        {% if product.metafields.custom.discount.value %}
+                          <div class="tag">
+                            <i
+                              ><img
+                                src="assets/images/product/tag.svg"
+                                alt=""
+                                loading="eager"
+                                width=""
+                                height=""
+                            ></i>
+
                             <span>{{ product.metafields.custom.discount.value }}</span>
-                          {% endif %}
-                        </div>
+                          </div>
+                        {% endif %}
                         <a class="heart" href="#"><i class="fi flaticon-heart"></i></a>
                       </div>
                     {% endif %}
@@ -157,78 +158,6 @@
                                 <label class="size-btn" for="{{size}}">{{ size }}</label>
                               </div>
                             {% endfor %}
-                            {% comment %}
-                              <div class="button-group">
-                                <input
-                                  type="radio"
-                                  id="2"
-                                  name="size"
-                                  class="size1"
-                                  value="1"
-                                >
-                                <label class="size-btn" for="2">Xs</label>
-                              </div>
-                              <div class="button-group">
-                                <input
-                                  type="radio"
-                                  id="3"
-                                  name="size"
-                                  class="size1"
-                                  value="1"
-                                >
-                                <label class="size-btn" for="3">X</label>
-                              </div>
-                              <div class="button-group">
-                                <input
-                                  type="radio"
-                                  id="4"
-                                  name="size"
-                                  class="size1"
-                                  value="1"
-                                >
-                                <label class="size-btn" for="4">M</label>
-                              </div>
-                              <div class="button-group">
-                                <input
-                                  type="radio"
-                                  id="5"
-                                  name="size"
-                                  class="size1"
-                                  value="1"
-                                >
-                                <label class="size-btn" for="5">L</label>
-                              </div>
-                              <div class="button-group">
-                                <input
-                                  type="radio"
-                                  id="6"
-                                  name="size"
-                                  class="size1"
-                                  value="1"
-                                >
-                                <label class="size-btn" for="6">XL</label>
-                              </div>
-                              <div class="button-group">
-                                <input
-                                  type="radio"
-                                  id="7"
-                                  name="size"
-                                  class="size1"
-                                  value="1"
-                                >
-                                <label class="size-btn" for="7">XXL</label>
-                              </div>
-                              <div class="button-group">
-                                <input
-                                  type="radio"
-                                  id="8"
-                                  name="size"
-                                  class="size1"
-                                  value="1"
-                                >
-                                <label class="size-btn" for="8">3XL</label>
-                              </div>
-                            {% endcomment %}
                           </div>
                         </div>
                       {% endif %}
