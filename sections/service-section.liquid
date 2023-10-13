@@ -3,34 +3,22 @@
   <div class="container">
     <div class="features-wrap">
       <div class="row">
-        <div class="col-lg-3 col-sm-6 col-12">
-          <div class="features-text">
-            <i><img src="assets/images/icon/1.svg" alt=""></i>
-            <h2>Free Delivery</h2>
-            <p>For orders over $60</p>
+        {% for block in section.blocks %}
+          <div class="col-lg-3 col-sm-6 col-12">
+            <div class="features-text">
+              <i
+                ><img
+                  src="{{ block.settings.service_image |  image_url: width: 300 }}"
+                  alt=""
+                  width=""
+                  height=""
+                  loading="eager"
+              ></i>
+              <h2>{{ block.settings.service_title }}</h2>
+              <p>{{ block.settings.service_description }}</p>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-12">
-          <div class="features-text">
-            <i><img src="assets/images/icon/2.svg" alt=""></i>
-            <h2>After-Sale Service</h2>
-            <p>24/7 support</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-12">
-          <div class="features-text">
-            <i><img src="assets/images/icon/3.svg" alt=""></i>
-            <h2>Buyer Protection</h2>
-            <p>100% secure payment system</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-12">
-          <div class="features-text">
-            <i><img src="assets/images/icon/4.svg" alt=""></i>
-            <h2>Special Discounts</h2>
-            <p>Guaranteed saving all the time</p>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
