@@ -4,48 +4,72 @@
     <div class="row">
       <div class="col col-xs-12">
         <div class="instagram-container instagram-slider owl-carousel">
-          <div class="grid">
-            <div class="instagram-item">
-              <a href="blog-single.html">
-                <img src="assets/images/instragram/2.jpg" alt class="img img-responsive">
-              </a>
+          {% for block in section.blocks %}
+            <div class="grid">
+              <div class="instagram-item">
+                <a href="{{ section.settings.instagram_url }}">
+                  <img
+                    src="{{ block.settings.instagram_image | image_url: width: 300 }}"
+                    alt
+                    class="img img-responsive"
+                    width=""
+                    height=""
+                    loading="eager"
+                  >
+                </a>
+              </div>
             </div>
-          </div>
-          <div class="grid">
-            <div class="instagram-item">
-              <a href="blog-single.html">
-                <img src="assets/images/instragram/3.jpg" alt class="img img-responsive">
-              </a>
-            </div>
-          </div>
-          <div class="grid">
-            <div class="instagram-item">
-              <a href="blog-single.html">
-                <img src="assets/images/instragram/4.jpg" alt class="img img-responsive">
-              </a>
-            </div>
-          </div>
-          <div class="grid">
-            <div class="instagram-item">
-              <a href="blog-single.html">
-                <img src="assets/images/instragram/5.jpg" alt class="img img-responsive">
-              </a>
-            </div>
-          </div>
-          <div class="grid">
-            <div class="instagram-item">
-              <a href="blog-single.html">
-                <img src="assets/images/instragram/1.jpg" alt class="img img-responsive">
-              </a>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
     <!-- end row -->
   </div>
   <div class="instagram-middle-text">
-    <span><i class="fi flaticon-instagram"></i>Morange</span>
+    <a href="{{ section.settings.instagram_url }}">
+      <span><i class="fi flaticon-instagram"></i>{{ section.settings.instagram_button_text }}</span>
+    </a>
   </div>
 </section>
 <!-- End instagram-section -->
+{% schema %}
+{
+  "name": "Instagram Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "instagram_button_text",
+      "label": "Button Text",
+      "default": "Morange"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Hero Slider",
+      "type": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "instagram_image",
+          "label": "Add Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Section",
+      "blocks": [
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
