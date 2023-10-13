@@ -1,18 +1,174 @@
 {
   "sections": {
     "image_banner": {
-      "type": "hero-slider"
+      "type": "hero-slider",
+      "blocks": {
+        "5888f342-58c7-4dc2-b21c-84fb064a31c1": {
+          "type": "heading",
+          "settings": {
+            "hero_slug": "This month from $29",
+            "hero_Title": "New Collection",
+            "hero_image": "shopify:\/\/shop_images\/p-banner.jpg",
+            "hero_url": "",
+            "hero_button_text": "Shop collection"
+          }
+        },
+        "1e8759c8-eed4-4df8-91ab-e23dcadcda68": {
+          "type": "heading",
+          "settings": {
+            "hero_slug": "This month from $29",
+            "hero_Title": "New Collection",
+            "hero_image": "shopify:\/\/shop_images\/theme_cover_image.jpg",
+            "hero_url": "",
+            "hero_button_text": "Shop collection"
+          }
+        },
+        "f49be8b6-fcac-41ff-849a-d6fa7f9c0b10": {
+          "type": "heading",
+          "settings": {
+            "hero_slug": "This month from $29",
+            "hero_Title": "New Collection",
+            "hero_image": "shopify:\/\/shop_images\/theme_cover_image.jpg",
+            "hero_url": "",
+            "hero_button_text": "Shop collection"
+          }
+        }
+      },
+      "block_order": [
+        "5888f342-58c7-4dc2-b21c-84fb064a31c1",
+        "1e8759c8-eed4-4df8-91ab-e23dcadcda68",
+        "f49be8b6-fcac-41ff-849a-d6fa7f9c0b10"
+      ],
+      "settings": {
+      }
     },
     "category_section": {
-      "type": "category-section"
+      "type": "category-section",
+      "blocks": {
+        "10a6a39b-06fd-431b-89cc-ac3c32c9b495": {
+          "type": "collection",
+          "settings": {
+            "category_list": "automated-collection"
+          }
+        },
+        "763caa65-9b0e-4614-a06c-237877a26cdc": {
+          "type": "collection",
+          "settings": {
+            "category_list": "tops"
+          }
+        },
+        "3e7080bd-e2d2-4ecb-9ab1-2a48c044b49e": {
+          "type": "collection",
+          "settings": {
+            "category_list": "dresses"
+          }
+        }
+      },
+      "block_order": [
+        "10a6a39b-06fd-431b-89cc-ac3c32c9b495",
+        "763caa65-9b0e-4614-a06c-237877a26cdc",
+        "3e7080bd-e2d2-4ecb-9ab1-2a48c044b49e"
+      ],
+      "settings": {
+      }
     },
-     "product_section": {
-      "type": "product-section"
+    "product_section": {
+      "type": "product-section",
+      "blocks": {
+        "e1793993-59d6-4c21-8be9-2a9aa90ac893": {
+          "type": "collection",
+          "settings": {
+            "feacture_collection": "dresses",
+            "tab_title": "NEW ARRIVALS"
+          }
+        },
+        "2357a1e9-1c45-4fab-891d-4015293236c9": {
+          "type": "collection",
+          "settings": {
+            "feacture_collection": "hydrogen",
+            "tab_title": "DRESS"
+          }
+        },
+        "69d93242-288d-4423-9255-bb586657a7f0": {
+          "type": "collection",
+          "settings": {
+            "feacture_collection": "automated-collection",
+            "tab_title": "NEW ARRIVALS"
+          }
+        }
+      },
+      "block_order": [
+        "e1793993-59d6-4c21-8be9-2a9aa90ac893",
+        "2357a1e9-1c45-4fab-891d-4015293236c9",
+        "69d93242-288d-4423-9255-bb586657a7f0"
+      ],
+      "settings": {
+        "limit_product": 4,
+        "view_all_product": ""
+      }
+    },
+    "a0c70b29-e281-4481-a40c-dced19f58ff2": {
+      "type": "category-section",
+      "blocks": {
+        "template--21352289567002__a0c70b29-e281-4481-a40c-dced19f58ff2-collection-1": {
+          "type": "collection",
+          "settings": {
+            "category_list": "hydrogen"
+          }
+        },
+        "9473b7d7-b874-4e36-bdd1-1797e803c7c3": {
+          "type": "collection",
+          "settings": {
+            "category_list": "dresses"
+          }
+        },
+        "e7933475-8af8-4242-a77e-ef0999e27b66": {
+          "type": "collection",
+          "settings": {
+            "category_list": "tops"
+          }
+        }
+      },
+      "block_order": [
+        "template--21352289567002__a0c70b29-e281-4481-a40c-dced19f58ff2-collection-1",
+        "9473b7d7-b874-4e36-bdd1-1797e803c7c3",
+        "e7933475-8af8-4242-a77e-ef0999e27b66"
+      ],
+      "settings": {
+      }
+    },
+    "278aeb73-b785-4900-be1c-7387ed3d62ce": {
+      "type": "product-grid",
+      "settings": {
+        "productList": [
+          "the-3p-fulfilled-snowboard",
+          "the-collection-snowboard-hydrogen",
+          "the-collection-snowboard-oxygen",
+          "the-multi-location-snowboard"
+        ]
+      }
+    },
+    "02278c90-5fcd-479a-ae8b-463cd4fbd19e": {
+      "type": "product-feature",
+      "settings": {
+        "banner_slug": "Shop By",
+        "banner_title": "Fall Dresses",
+        "banner_button_texr": "Shop Now",
+        "banner_button_url": "",
+        "banner_image": "shopify:\/\/shop_images\/p-banner.jpg",
+        "featured_products": [
+          "the-3p-fulfilled-snowboard",
+          "the-collection-snowboard-hydrogen"
+        ]
+      }
     }
   },
   "order": [
     "image_banner",
     "category_section",
-    "product_section"
+    "product_section",
+    "a0c70b29-e281-4481-a40c-dced19f58ff2",
+    "278aeb73-b785-4900-be1c-7387ed3d62ce",
+    "02278c90-5fcd-479a-ae8b-463cd4fbd19e"
   ]
 }
