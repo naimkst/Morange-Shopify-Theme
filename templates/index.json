@@ -1,13 +1,35 @@
 {
   "sections": {
     "image_banner": {
-      "type": "hero-slider"
+      "type": "hero-slider",
+      "blocks": {
+        "5888f342-58c7-4dc2-b21c-84fb064a31c1": {
+          "type": "heading",
+          "settings": {
+            "hero_slug": "This month from $29",
+            "hero_Title": "New Collection",
+            "hero_url": "",
+            "hero_button_text": "Shop collection"
+          }
+        }
+      },
+      "block_order": [
+        "5888f342-58c7-4dc2-b21c-84fb064a31c1"
+      ],
+      "settings": {
+      }
     },
     "category_section": {
-      "type": "category-section"
+      "type": "category-section",
+      "settings": {
+      }
     },
-     "product_section": {
-      "type": "product-section"
+    "product_section": {
+      "type": "product-section",
+      "settings": {
+        "limit_product": 4,
+        "view_all_product": ""
+      }
     }
   },
   "order": [
