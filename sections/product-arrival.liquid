@@ -24,3 +24,50 @@
   </div>
 </section>
 <!-- end of product-section -->
+{% schema %}
+{
+  "name": "Winter Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "winter_slug",
+      "label": "Winter Slug",
+      "default": "New Arrival"
+    },
+    {
+      "type": "text",
+      "id": "winter_title",
+      "label": "Winter Title",
+      "default": "WINTER Collection"
+    },
+    {
+      "type": "text",
+      "id": "winter_descripiton",
+      "label": "Winter Description",
+      "default": "Lorem ipsum is simply dummy text of the printing typesetting industry. Lorem ipsum has been standard dummy text. Lorem ipsum has been standard."
+    },
+    {
+      "type": "text",
+      "id": "winter_button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "banner_button_url",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Winter Collection"
+    }
+  ]
+}
+{% endschema %}
