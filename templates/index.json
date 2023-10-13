@@ -136,12 +136,24 @@
       ],
       "settings": {
       }
+    },
+    "278aeb73-b785-4900-be1c-7387ed3d62ce": {
+      "type": "product-grid",
+      "settings": {
+        "productList": [
+          "the-3p-fulfilled-snowboard",
+          "the-collection-snowboard-hydrogen",
+          "the-collection-snowboard-oxygen",
+          "the-multi-location-snowboard"
+        ]
+      }
     }
   },
   "order": [
     "image_banner",
     "category_section",
     "product_section",
-    "a0c70b29-e281-4481-a40c-dced19f58ff2"
+    "a0c70b29-e281-4481-a40c-dced19f58ff2",
+    "278aeb73-b785-4900-be1c-7387ed3d62ce"
   ]
 }
