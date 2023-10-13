@@ -172,6 +172,51 @@
         "banner_button_url": "",
         "banner_image": "shopify:\/\/shop_images\/banner.jpg"
       }
+    },
+    "f8b1cace-f849-49b7-aa8f-fe08a6c69bad": {
+      "type": "service-section",
+      "blocks": {
+        "template--21352289567002__f8b1cace-f849-49b7-aa8f-fe08a6c69bad-slider-1": {
+          "type": "slider",
+          "settings": {
+            "service_image": "shopify:\/\/shop_images\/1.svg",
+            "service_title": "FREE DELIVERY",
+            "service_description": "For orders over $60"
+          }
+        },
+        "22b4e5d4-8f2c-4beb-8870-8a16e9bdd917": {
+          "type": "slider",
+          "settings": {
+            "service_image": "shopify:\/\/shop_images\/6.svg",
+            "service_title": "AFTER-SALE SERVICE",
+            "service_description": "24\/7 support"
+          }
+        },
+        "21a7735a-1947-43e2-9c09-f66f9b3a1068": {
+          "type": "slider",
+          "settings": {
+            "service_image": "shopify:\/\/shop_images\/3.svg",
+            "service_title": "BUYER PROTECTION",
+            "service_description": "100% secure payment system"
+          }
+        },
+        "3dddf1e0-d3c8-4c55-9b6d-dc4fb0556387": {
+          "type": "slider",
+          "settings": {
+            "service_image": "shopify:\/\/shop_images\/4.svg",
+            "service_title": "SPECIAL DISCOUNTS",
+            "service_description": "Guaranteed saving all the time"
+          }
+        }
+      },
+      "block_order": [
+        "template--21352289567002__f8b1cace-f849-49b7-aa8f-fe08a6c69bad-slider-1",
+        "22b4e5d4-8f2c-4beb-8870-8a16e9bdd917",
+        "21a7735a-1947-43e2-9c09-f66f9b3a1068",
+        "3dddf1e0-d3c8-4c55-9b6d-dc4fb0556387"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -181,6 +226,7 @@
     "a0c70b29-e281-4481-a40c-dced19f58ff2",
     "278aeb73-b785-4900-be1c-7387ed3d62ce",
     "02278c90-5fcd-479a-ae8b-463cd4fbd19e",
-    "a973bad4-ac3a-4eac-b359-840e0636dd42"
+    "a973bad4-ac3a-4eac-b359-840e0636dd42",
+    "f8b1cace-f849-49b7-aa8f-fe08a6c69bad"
   ]
 }
