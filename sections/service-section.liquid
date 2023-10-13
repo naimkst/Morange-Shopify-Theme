@@ -36,3 +36,45 @@
   </div>
 </section>
 <!-- end of product-section -->
+
+{% schema %}
+{
+  "name": "Service Section",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "Service Item",
+      "type": "slider",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "service_image",
+          "label": "Service Image"
+        },
+        {
+          "type": "text",
+          "id": "service_title",
+          "label": "Service Title",
+          "default": "FREE DELIVERY"
+        },
+        {
+          "type": "text",
+          "id": "service_description",
+          "label": "Service Description",
+          "default": "For orders over $60"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service Section",
+      "blocks": [
+        {
+          "type": "slider"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
