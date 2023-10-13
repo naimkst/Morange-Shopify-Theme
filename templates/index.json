@@ -44,6 +44,31 @@
     },
     "category_section": {
       "type": "category-section",
+      "blocks": {
+        "3e7080bd-e2d2-4ecb-9ab1-2a48c044b49e": {
+          "type": "collection",
+          "settings": {
+            "category_list": "dresses"
+          }
+        },
+        "763caa65-9b0e-4614-a06c-237877a26cdc": {
+          "type": "collection",
+          "settings": {
+            "category_list": "tops"
+          }
+        },
+        "10a6a39b-06fd-431b-89cc-ac3c32c9b495": {
+          "type": "collection",
+          "settings": {
+            "category_list": "automated-collection"
+          }
+        }
+      },
+      "block_order": [
+        "3e7080bd-e2d2-4ecb-9ab1-2a48c044b49e",
+        "763caa65-9b0e-4614-a06c-237877a26cdc",
+        "10a6a39b-06fd-431b-89cc-ac3c32c9b495"
+      ],
       "settings": {
       }
     },
