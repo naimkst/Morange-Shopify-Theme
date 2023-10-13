@@ -5,143 +5,180 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="product-banner">
-            <img src="assets/images/product/p-banner.jpg" alt="">
+            <img src="{{ section.settings.banner_image | image_url: width: 600 }}" alt="">
 
             <div class="product-banner-text">
-              <small>Shop By</small>
-              <h2>Fall <span>Dresses</span></h2>
-              <a href="shop.html">Shop Now</a>
+              <small>{{ section.settings.banner_slug }}</small>
+              <h2>{{ section.settings.banner_title }}</h2>
+              <a href="{{ section.settings.banner_button_url}}">{{ section.settings.banner_button_texr }}</a>
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-12">
-          <div class="product-item">
-            <div class="product-image">
-              <img src="assets/images/product/6.jpg" alt="">
-              <div class="tag">
-                <i><img src="assets/images/product/tag.svg" alt=""></i>
-                <span>20% off at checkout</span>
-              </div>
-              <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-            </div>
-            <div class="product-text">
-              <div class="color-name">
-                <div>
-                  <input type="radio" name="color" id="001" class="aggree color1" checked>
-                  <span style="margin:5px"></span>
-                  <input type="radio" name="color" class="aggree color2">
-                  <span style="margin:5px"> </span>
+        {% for product in section.settings.featured_products %}
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="product-item">
+              {% if product.images.size > 1 %}
+                <div class="product-image">
+                  <div class="product-img-slider owl-carousel">
+                    {% for image in product.images %}
+                      <img
+                        class="prodImage"
+                        src="{{ image | image_url: height: 376 }}"
+                        alt=""
+                        loading="eager"
+                        width=""
+                        height=""
+                      >
+                    {% endfor %}
+                  </div>
+                  <div class="tag">
+                    <i
+                      ><img
+                        src="{{ 'tag.svg' | asset_url }}"
+                        alt=""
+                        loading="eager"
+                        width=""
+                        height=""
+                    ></i>
+                    {% if product.metafields.custom.discount %}
+                      <span>{{ product.metafields.custom.discount.value }}</span>
+                    {% endif %}
+                  </div>
+                  <a class="heart" href="#"><i class="fi flaticon-heart"></i></a>
                 </div>
-              </div>
-              <h4><a href="product-single.html">Alejandra</a></h4>
-              <ul class="product-text-sub">
-                <li>One Shoulder Satin Maxi Dress - Red</li>
-                <li class="price">$200.00</li>
-              </ul>
-              <div class="shop-filter-item size">
-                <div class="size-item">
-                  <div class="button-group">
-                    <input type="radio" id="e1" name="size" class="size1" value="1">
-                    <label class="size-btn" for="e1">xxs</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="e2" name="size" class="size1" value="1">
-                    <label class="size-btn" for="e2">Xs</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="e3" name="size" class="size1" value="1">
-                    <label class="size-btn" for="e3">X</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="e4" name="size" class="size1" value="1">
-                    <label class="size-btn" for="e4">M</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="e5" name="size" class="size1" value="1">
-                    <label class="size-btn" for="e5">L</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="e6" name="size" class="size1" value="1">
-                    <label class="size-btn" for="e6">XL</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="e7" name="size" class="size1" value="1">
-                    <label class="size-btn" for="e7">XXL</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="e8" name="size" class="size1" value="1">
-                    <label class="size-btn" for="e8">3XL</label>
-                  </div>
+              {% else %}
+                <div class="product-image">
+                  <img
+                    src="{{ product.featured_image | image_url: height: 376 }}"
+                    alt=""
+                    loading="eager"
+                    width=""
+                    height=""
+                  >
+                  {% if product.metafields.custom.discount.value %}
+                    <div class="tag">
+                      <i
+                        ><img
+                          src="assets/images/product/tag.svg"
+                          alt=""
+                          loading="eager"
+                          width=""
+                          height=""
+                      ></i>
+
+                      <span>{{ product.metafields.custom.discount.value }}</span>
+                    </div>
+                  {% endif %}
+
+                  <a class="heart" href="#"><i class="fi flaticon-heart"></i></a>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-12">
-          <div class="product-item">
-            <div class="product-image">
-              <img src="assets/images/product/8.jpg" alt="">
-              <div class="tag">
-                <i><img src="assets/images/product/tag.svg" alt=""></i>
-                <span>20% off at checkout</span>
-              </div>
-              <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-            </div>
-            <div class="product-text">
-              <div class="color-name">
-                <div>
-                  <input type="radio" name="color" id="001" class="aggree color1" checked>
-                  <span style="margin:5px"></span>
-                  <input type="radio" name="color" class="aggree color2">
-                  <span style="margin:5px"> </span>
-                </div>
-              </div>
-              <h4><a href="product-single.html">Alejandra</a></h4>
-              <ul class="product-text-sub">
-                <li>One Shoulder Satin Maxi Dress - Red</li>
-                <li class="price">$200.00</li>
-              </ul>
-              <div class="shop-filter-item size">
-                <div class="size-item">
-                  <div class="button-group">
-                    <input type="radio" id="g1" name="size" class="size1" value="1">
-                    <label class="size-btn" for="g1">xxs</label>
+              {% endif %}
+
+              <div class="product-text">
+                {% if product.options.size > 0 and product.options.first == 'Color' %}
+                  <div class="color-name">
+                    <div>
+                      {% assign unique_colors = product.variants | map: 'option1' | uniq %}
+                      {% for color in unique_colors %}
+                        <input
+                          type="radio"
+                          name="color"
+                          id="001-{{ color }}"
+                          class="aggree color1"
+                          checked
+                          style="background-color: {{ color }}"
+                        >
+                        <span style="margin:5px"></span>
+                      {% endfor %}
+                    </div>
                   </div>
-                  <div class="button-group">
-                    <input type="radio" id="g2" name="size" class="size1" value="1">
-                    <label class="size-btn" for="g2">Xs</label>
+                {% endif %}
+                <h4>
+                  <a href="{{ product.url }}">{{ product.title }}</a>
+                </h4>
+                <ul class="product-text-sub">
+                  <li>{{ product.description | truncate: 35 }}</li>
+                  <li class="price">{{ product.price | money }}</li>
+                </ul>
+
+                {% assign unique_size = product.variants | map: 'option2' | uniq %}
+                {% assign productSize = product.options | map: 'Size' %}
+
+                <script>
+                  // console.log({{ product.options | json }});
+                  console.log({{ productSize | json }});
+                </script>
+                {% if product.options.size > 0 and product.options contains 'Size' %}
+                  <div class="shop-filter-item size">
+                    <div class="size-item">
+                      {% for size in unique_size %}
+                        <div class="button-group">
+                          <input
+                            type="radio"
+                            id="{{ size }}"
+                            name="size"
+                            class="size1"
+                            value="1"
+                          >
+                          <label class="size-btn" for="{{size}}">{{ size }}</label>
+                        </div>
+                      {% endfor %}
+                    </div>
                   </div>
-                  <div class="button-group">
-                    <input type="radio" id="g3" name="size" class="size1" value="1">
-                    <label class="size-btn" for="g3">X</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="g4" name="size" class="size1" value="1">
-                    <label class="size-btn" for="g4">M</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="g5" name="size" class="size1" value="1">
-                    <label class="size-btn" for="g5">L</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="g6" name="size" class="size1" value="1">
-                    <label class="size-btn" for="g6">XL</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="g7" name="size" class="size1" value="1">
-                    <label class="size-btn" for="g7">XXL</label>
-                  </div>
-                  <div class="button-group">
-                    <input type="radio" id="g8" name="size" class="size1" value="1">
-                    <label class="size-btn" for="g8">3XL</label>
-                  </div>
-                </div>
+                {% endif %}
               </div>
             </div>
           </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
 </section>
 <!-- end of product-section -->
+
+{% schema %}
+{
+  "name": "Feature Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "banner_slug",
+      "label": "Banner Slug",
+      "default": "Shop By"
+    },
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Banner Title",
+      "default": "Fall Dresses"
+    },
+    {
+      "type": "text",
+      "id": "banner_button_texr",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "banner_button_url",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "product_list",
+      "id": "featured_products",
+      "label": "Add Product"
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Feature Banner"
+    }
+  ]
+}
+{% endschema %}
