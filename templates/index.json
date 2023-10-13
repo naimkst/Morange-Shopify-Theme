@@ -217,6 +217,59 @@
       ],
       "settings": {
       }
+    },
+    "b30c5717-b8c2-4f4e-bdc8-cf685d63a1c0": {
+      "type": "instagram-section",
+      "blocks": {
+        "template--21352289567002__b30c5717-b8c2-4f4e-bdc8-cf685d63a1c0-image-1": {
+          "type": "image",
+          "settings": {
+            "instagram_image": "shopify:\/\/shop_images\/7_0de4a439-9a87-4956-bf43-32fd2e7f29bc.jpg"
+          }
+        },
+        "a82747b0-eb8c-4744-bd92-ad1e077812bd": {
+          "type": "image",
+          "settings": {
+            "instagram_image": "shopify:\/\/shop_images\/5_4461627b-2f3a-4180-b466-d727a31800ef.jpg"
+          }
+        },
+        "9ba9fb5d-c749-4f5a-8372-67c901a06bcf": {
+          "type": "image",
+          "settings": {
+            "instagram_image": "shopify:\/\/shop_images\/1_6a88ad9a-744c-4884-b641-83a5b8c6586e.jpg"
+          }
+        },
+        "2842b323-d25e-4daa-bf3d-ae73b3923298": {
+          "type": "image",
+          "settings": {
+            "instagram_image": "shopify:\/\/shop_images\/4_a485c530-055d-4c0c-86f6-6750f9a9380c.jpg"
+          }
+        },
+        "361c3050-bd0d-458c-9433-8e826a295c7a": {
+          "type": "image",
+          "settings": {
+            "instagram_image": "shopify:\/\/shop_images\/6_cf2caa6a-0bcd-4ba1-afd7-220719a4ef22.jpg"
+          }
+        },
+        "dbaf958f-40a8-4b5a-b123-0fa6baee2a3d": {
+          "type": "image",
+          "settings": {
+            "instagram_image": "shopify:\/\/shop_images\/2_918631e8-5023-4e18-a817-7d00d77dd402.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--21352289567002__b30c5717-b8c2-4f4e-bdc8-cf685d63a1c0-image-1",
+        "a82747b0-eb8c-4744-bd92-ad1e077812bd",
+        "9ba9fb5d-c749-4f5a-8372-67c901a06bcf",
+        "2842b323-d25e-4daa-bf3d-ae73b3923298",
+        "361c3050-bd0d-458c-9433-8e826a295c7a",
+        "dbaf958f-40a8-4b5a-b123-0fa6baee2a3d"
+      ],
+      "settings": {
+        "instagram_button_text": "Morange",
+        "instagram_url": ""
+      }
     }
   },
   "order": [
@@ -227,6 +280,7 @@
     "278aeb73-b785-4900-be1c-7387ed3d62ce",
     "02278c90-5fcd-479a-ae8b-463cd4fbd19e",
     "a973bad4-ac3a-4eac-b359-840e0636dd42",
-    "f8b1cace-f849-49b7-aa8f-fe08a6c69bad"
+    "f8b1cace-f849-49b7-aa8f-fe08a6c69bad",
+    "b30c5717-b8c2-4f4e-bdc8-cf685d63a1c0"
   ]
 }
