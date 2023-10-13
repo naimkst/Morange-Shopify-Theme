@@ -5,18 +5,23 @@
       <div class="row">
         <div class="col-lg-7">
           <div class="product-arrival-img">
-            <img src="assets/images/banner.jpg" alt="">
+            <img
+              src="{{ section.settings.banner_image |  image_url: width: 600 }}"
+              alt=""
+              height=""
+              width=""
+              loading="eager"
+            >
           </div>
         </div>
         <div class="col-lg-5">
           <div class="product-arrival-text">
-            <small>New Arrival</small>
-            <h2>Winter <span>Collection</span></h2>
+            <small>{{ section.settings.winter_slug }}</small>
+            <h2>{{ section.settings.winter_title }}</h2>
             <p>
-              Lorem ipsum is simply dummy text of the printing typesetting industry. Lorem ipsum has been standard dummy
-              text. Lorem ipsum has been standard.
+              {{ section.settings.winter_descripiton }}
             </p>
-            <a href="#">Discover Now</a>
+            <a href="{{ section.settings.banner_button_url }}">{{ section.settings.winter_button_text }}</a>
           </div>
         </div>
       </div>
