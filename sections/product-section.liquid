@@ -1,3 +1,10 @@
+<script>
+  window.product = {{ product | json }} || {}
+</script>
+<script type="application/json">
+  {{ product.variants | json }}
+</script>
+
 <!-- start of product-section -->
 <section class="product-section">
   <div class="container">
@@ -5,1485 +12,296 @@
       <div class="row">
         <div class="col-lg-10 col-sm-9 col-12">
           <ul class="nav nav-mb-3 main-tab" id="tab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="arrival-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#arrival"
-                type="button"
-                role="tab"
-                aria-controls="arrival"
-                aria-selected="true"
-              >
-                NEW ARRIVALS
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="trending-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#trending"
-                type="button"
-                role="tab"
-                aria-controls="trending"
-                aria-selected="false"
-              >
-                WHAT’S TRENDING
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="exclusive-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#exclusive"
-                type="button"
-                role="tab"
-                aria-controls="exclusive"
-                aria-selected="false"
-              >
-                EXCLUSIVE
-              </button>
-            </li>
+            {% for block in section.blocks %}
+              <li class="nav-item" role="presentation">
+                <button
+                  class="
+                    nav-link  {% if forloop.index == 1 %}
+                     active
+                    {% endif %}
+                  "
+                  onclick="openPage('tabs{{ forloop.index }}', this, 'nav-link active')"
+                  {% if forloop.index == 1 %}
+                    id="arrival-tab-{{ forloop.index }}"
+                  {% endif %}
+                  data-bs-toggle="pill"
+                  data-bs-target="#arrival-{{ forloop.index }}"
+                  type="button"
+                  role="tab"
+                  aria-controls="arrival-{{ forloop.index }}"
+                  aria-selected="true"
+                >
+                  {{ block.settings.tab_title }}
+                </button>
+              </li>
+            {% endfor %}
           </ul>
         </div>
         <div class="col-lg-2 col-sm-3 col-12">
           <div class="view-btn-wrap">
-            <a href="shop.html" class="view-btn">VIEW ALL</a>
+            <a href="{{ section.settings.view_all_product }}" class="view-btn">VIEW ALL</a>
           </div>
         </div>
       </div>
       <div class="tab-content">
-        <div
-          class="tab-pane fade show active"
-          id="arrival"
-          role="tabpanel"
-          aria-labelledby="arrival-tab"
-        >
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <div class="product-img-slider owl-carousel">
-                    <img src="{{ '1.jpg' |  asset_url }}" alt="">
-                    <img src="{{ '2.jpg' |  asset_url }}" alt="">
-                    <img src="{{ '3.jpg' |  asset_url }}" alt="">
-                    <img src="{{ '4.jpg' |  asset_url }}" alt="">
-                  </div>
-                  <div class="tag">
-                    <i><img src="{{ 'tag.svg' |  asset_url }}" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="1">xxs</label>
+        {% for block in section.blocks %}
+          <div
+            class="
+              tab-pane fade{% if forloop.index == 1 %}
+                show active
+              {% endif %}
+            "
+            {% if forloop.index == 1 %}
+              id="arrival-tab-{{ forloop.index }}"
+            {% endif %}
+            id="arrival-{{ forloop.index }}"
+            role="tabpanel"
+            aria-labelledby="arrival-tab"
+          >
+            <div class="row">
+              {% for product in collections[block.settings.feacture_collection].products %}
+                <div class="col-lg-3 col-md-6 col-12">
+                  <div class="product-item">
+                    {% if product.images.size > 1 %}
+                      <div class="product-image">
+                        <div class="product-img-slider owl-carousel">
+                          {% for image in product.images %}
+                            <img
+                              class="prodImage"
+                              src="{{ image | image_url: height: 376 }}"
+                              alt=""
+                              loading="eager"
+                              width=""
+                              height=""
+                            >
+                          {% endfor %}
+                        </div>
+                        <div class="tag">
+                          <i
+                            ><img
+                              src="{{ 'tag.svg' | asset_url }}"
+                              alt=""
+                              loading="eager"
+                              width=""
+                              height=""
+                          ></i>
+                          {% if product.metafields.custom.discount %}
+                            <span>{{ product.metafields.custom.discount.value }}</span>
+                          {% endif %}
+                        </div>
+                        <a class="heart" href="#"><i class="fi flaticon-heart"></i></a>
                       </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="2"
-                          name="size"
-                          class="size1"
-                          value="1"
+                    {% else %}
+                      <div class="product-image">
+                        <img
+                          src="{{ product.featured_image | image_url: height: 376 }}"
+                          alt=""
+                          loading="eager"
+                          width=""
+                          height=""
                         >
-                        <label class="size-btn" for="2">Xs</label>
+                        <div class="tag">
+                          <i
+                            ><img
+                              src="assets/images/product/tag.svg"
+                              alt=""
+                              loading="eager"
+                              width=""
+                              height=""
+                          ></i>
+                          {% if product.metafields.custom.discount %}
+                            <span>{{ product.metafields.custom.discount.value }}</span>
+                          {% endif %}
+                        </div>
+                        <a class="heart" href="#"><i class="fi flaticon-heart"></i></a>
                       </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="{{'2.jpg' |  asset_url }}" alt="">
-                  <div class="tag">
-                    <i><img src="{{ 'tag.svg' |  asset_url }}" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a8">3XL</label>
-                      </div>
+                    {% endif %}
+
+                    <div class="product-text">
+                      {% if product.options.size > 0 and product.options.first == 'Color' %}
+                        <div class="color-name">
+                          <div>
+                            {% assign unique_colors = product.variants | map: 'option1' | uniq %}
+                            {% for color in unique_colors %}
+                              <input
+                                type="radio"
+                                name="color"
+                                id="001-{{ color }}"
+                                class="aggree color1"
+                                checked
+                                style="background-color: {{ color }}"
+                              >
+                              <span style="margin:5px"></span>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      {% endif %}
+                      <h4>
+                        <a href="{{ product.url }}">{{ product.title }}</a>
+                      </h4>
+                      <ul class="product-text-sub">
+                        <li>{{ product.description | truncate: 35 }}</li>
+                        <li class="price">{{ product.price | money }}</li>
+                      </ul>
+
+                      {% assign unique_size = product.variants | map: 'option2' | uniq %}
+                      {% assign productSize = product.options | map: 'Size' %}
+
+                      <script>
+                        // console.log({{ product.options | json }});
+                        console.log({{ productSize | json }});
+                      </script>
+                      {% if product.options.size > 0 and product.options contains 'Size' %}
+                        <div class="shop-filter-item size">
+                          <div class="size-item">
+                            {% for size in unique_size %}
+                              <div class="button-group">
+                                <input
+                                  type="radio"
+                                  id="{{ size }}"
+                                  name="size"
+                                  class="size1"
+                                  value="1"
+                                >
+                                <label class="size-btn" for="{{size}}">{{ size }}</label>
+                              </div>
+                            {% endfor %}
+                            {% comment %}
+                              <div class="button-group">
+                                <input
+                                  type="radio"
+                                  id="2"
+                                  name="size"
+                                  class="size1"
+                                  value="1"
+                                >
+                                <label class="size-btn" for="2">Xs</label>
+                              </div>
+                              <div class="button-group">
+                                <input
+                                  type="radio"
+                                  id="3"
+                                  name="size"
+                                  class="size1"
+                                  value="1"
+                                >
+                                <label class="size-btn" for="3">X</label>
+                              </div>
+                              <div class="button-group">
+                                <input
+                                  type="radio"
+                                  id="4"
+                                  name="size"
+                                  class="size1"
+                                  value="1"
+                                >
+                                <label class="size-btn" for="4">M</label>
+                              </div>
+                              <div class="button-group">
+                                <input
+                                  type="radio"
+                                  id="5"
+                                  name="size"
+                                  class="size1"
+                                  value="1"
+                                >
+                                <label class="size-btn" for="5">L</label>
+                              </div>
+                              <div class="button-group">
+                                <input
+                                  type="radio"
+                                  id="6"
+                                  name="size"
+                                  class="size1"
+                                  value="1"
+                                >
+                                <label class="size-btn" for="6">XL</label>
+                              </div>
+                              <div class="button-group">
+                                <input
+                                  type="radio"
+                                  id="7"
+                                  name="size"
+                                  class="size1"
+                                  value="1"
+                                >
+                                <label class="size-btn" for="7">XXL</label>
+                              </div>
+                              <div class="button-group">
+                                <input
+                                  type="radio"
+                                  id="8"
+                                  name="size"
+                                  class="size1"
+                                  value="1"
+                                >
+                                <label class="size-btn" for="8">3XL</label>
+                              </div>
+                            {% endcomment %}
+                          </div>
+                        </div>
+                      {% endif %}
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="assets/images/product/3.jpg" alt="">
-                  <div class="tag">
-                    <i><img src="assets/images/product/tag.svg" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="assets/images/product/4.jpg" alt="">
-                  <div class="tag">
-                    <i><img src="assets/images/product/tag.svg" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
-        </div>
-        <div class="tab-pane fade" id="trending" role="tabpanel" aria-labelledby="trending-tab">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="assets/images/product/4.jpg" alt="">
-                  <div class="tag">
-                    <i><img src="assets/images/product/tag.svg" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="assets/images/product/3.jpg" alt="">
-                  <div class="tag">
-                    <i><img src="assets/images/product/tag.svg" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="assets/images/product/2.jpg" alt="">
-                  <div class="tag">
-                    <i><img src="assets/images/product/tag.svg" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="assets/images/product/1.jpg" alt="">
-                  <div class="tag">
-                    <i><img src="assets/images/product/tag.svg" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="exclusive" role="tabpanel" aria-labelledby="exclusive-tab">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="assets/images/product/3.jpg" alt="">
-                  <div class="tag">
-                    <i><img src="assets/images/product/tag.svg" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="assets/images/product/2.jpg" alt="">
-                  <div class="tag">
-                    <i><img src="assets/images/product/tag.svg" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="a8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="a8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="assets/images/product/1.jpg" alt="">
-                  <div class="tag">
-                    <i><img src="assets/images/product/tag.svg" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="b8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="b8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item">
-                <div class="product-image">
-                  <img src="assets/images/product/4.jpg" alt="">
-                  <div class="tag">
-                    <i><img src="assets/images/product/tag.svg" alt=""></i>
-                    <span>20% off at checkout</span>
-                  </div>
-                  <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
-                </div>
-                <div class="product-text">
-                  <div class="color-name">
-                    <div>
-                      <input
-                        type="radio"
-                        name="color"
-                        id="001"
-                        class="aggree color1"
-                        checked
-                      >
-                      <span style="margin:5px"></span>
-                      <input type="radio" name="color" class="aggree color2">
-                      <span style="margin:5px"> </span>
-                    </div>
-                  </div>
-                  <h4><a href="product-single.html">Alejandra</a></h4>
-                  <ul class="product-text-sub">
-                    <li>One Shoulder Satin Maxi Dress - Red</li>
-                    <li class="price">$200.00</li>
-                  </ul>
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c1"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c1">xxs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c2"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c2">Xs</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c3"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c3">X</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c4"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c4">M</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c5"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c5">L</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c6"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c6">XL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c7"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c7">XXL</label>
-                      </div>
-                      <div class="button-group">
-                        <input
-                          type="radio"
-                          id="c8"
-                          name="size"
-                          class="size1"
-                          value="1"
-                        >
-                        <label class="size-btn" for="c8">3XL</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
 </section>
 <!-- end of product-section -->
+
+{% schema %}
+{
+  "name": "Product Section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "limit_product",
+      "label": "Product Limit",
+      "min": 4,
+      "max": 100,
+      "step": 4,
+      "unit": "col",
+      "default": 4
+    },
+    {
+      "type": "url",
+      "id": "view_all_product",
+      "label": "View All Product"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Collection Tab",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "feacture_collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "NEW ARRIVALS"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Section",
+      "blocks": [
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

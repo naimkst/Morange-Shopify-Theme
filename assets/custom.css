@@ -2,3 +2,14 @@
   max-height: 425px;
   object-fit: cover;
 }
+.prodImage {
+  width: 100%;
+  height: 376px;
+  object-fit: cover;
+}
+.product-wrap .product-item .product-image .tag {
+  z-index: 2;
+}
+.product-wrap .product-item .product-text .product-text-sub li p {
+  margin-bottom: 0px;
+}
