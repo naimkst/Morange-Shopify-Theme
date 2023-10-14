@@ -1,11 +1,11 @@
 <!-- start of static-hero-slide-section -->
 <section
   class="static-hero"
-  style="background: url({{ section.settings.banner_image | image_url: width: "100%" }}) no-repeat center center;"
+  style="background: url({{ section.settings.banner_image | image_url: width: 1920 }}) no-repeat center center;"
 >
   <div class="container">
     <div class="hero-content">
-      <span>HOME / Collection</span>
+      {% comment %} <span>HOME / {{ page_title }}</span> {% endcomment %}
       <h2>{{ section.settings.product_banner_title }}</h2>
       <p>
         {{ section.settings.product_banner_description }}
