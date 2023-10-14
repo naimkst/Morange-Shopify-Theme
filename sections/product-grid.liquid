@@ -86,7 +86,7 @@
                   <a href="{{ product.url }}">{{ product.title }}</a>
                 </h4>
                 <ul class="product-text-sub">
-                  <li>{{ product.description | truncate: 35 }}</li>
+                  <li>{{ product.description | truncate: 35 | strip_html }}</li>
                   <li class="price">{{ product.price | money }}</li>
                 </ul>
 
