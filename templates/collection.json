@@ -7,9 +7,20 @@
         "product_banner_description": "Stay ahead of the fashion curve! Discover your one-stop shop for all the newest releases, collections and trends of the moment.",
         "banner_image": "shopify:\/\/shop_images\/slide-4.jpg"
       }
+    },
+    "970ef128-f5bf-4774-bf58-b41c646010c7": {
+      "type": "product-slider",
+      "settings": {
+        "collection_name": "Dresses",
+        "collection_description": "Lorem ipsum is simply dummy text of the printing typesetting industry. Lorem ipsum has been standard dummy text.",
+        "collection_button_text": "VIEW ALL",
+        "collection_url": "#",
+        "product_collection": "automated-collection"
+      }
     }
   },
   "order": [
-    "banner"
+    "banner",
+    "970ef128-f5bf-4774-bf58-b41c646010c7"
   ]
 }
