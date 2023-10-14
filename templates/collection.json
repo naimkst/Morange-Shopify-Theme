@@ -1,10 +1,21 @@
 {
   "sections": {
     "banner": {
-      "type": "content"
+      "type": "content",
+      "settings": {
+      }
+    },
+    "161730da-64fa-426a-8a42-2e6ce9f8e705": {
+      "type": "hero-banner",
+      "settings": {
+        "product_banner_title": "Spotlight On",
+        "product_banner_description": "Stay ahead of the fashion curve! Discover your one-stop shop for all the newest releases, collections and trends of the moment.",
+        "banner_image": "shopify:\/\/shop_images\/slide-4.jpg"
+      }
     }
   },
   "order": [
-    "banner"
+    "banner",
+    "161730da-64fa-426a-8a42-2e6ce9f8e705"
   ]
 }
