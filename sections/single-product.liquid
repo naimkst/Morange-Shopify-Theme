@@ -1,0 +1,286 @@
+<script>
+  console.log({{ product | json }})
+</script>
+
+<section class="wpo-shop-single-section product-details section-padding pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-8 col-12">
+        <div class="shop-single-slider product-single-content">
+          <div class="row">
+            <div class="col col-lg-1 col-1">
+              <div class="product-nav">
+                {% for image in product.media %}
+                  {% if image.media_type == 'image' %}
+                    <div><img src="{{ image | image_url: height: 108 }}" alt width="" height="" loading="eager"></div>
+                  {% endif %}
+                  {% if image.media_type == 'video' %}
+                    <div class="video-thumb">
+                      <img src="{{ 'video-thumbnail.png' | asset_url }}" alt width="" height="" loading="eager">
+                      <a class="video-btn"></a>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="col-lg-11 col col-11">
+              <div class="product-for">
+                {% for image in product.media %}
+                  {% if image.media_type == 'image' %}
+                    <div class="pro-inner">
+                      <img
+                        src="{{ image | image_url: height: 590, width: 395, crop: 'center' }}"
+                        alt
+                        width=""
+                        height=""
+                        loading="eager"
+                      >
+                      <img
+                        src="{{ image | image_url: height: 590, width: 395, crop: 'center' }}"
+                        alt
+                        width=""
+                        height=""
+                        loading="eager"
+                      >
+                    </div>
+                  {% endif %}
+                  {% if image.media_type == 'video' %}
+                    <div class="pro-inner product-videos">
+                      <div class="product-video">
+                        <video controls autoplay muted>
+                          <source src="{{ 'video.mp4' | asset_url }}" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wpo-faq-section">
+          <div class="wpo-benefits-item">
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingOne">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    Description
+                  </button>
+                </h3>
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      {{ product.description }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingTwo">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                  >
+                    FEATURES
+                  </button>
+                </h3>
+                <div
+                  id="collapseTwo"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingTwo"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      Yes to back-talk. <br>
+                      ALEJANDRA is a maxi dress with an elongating silhouette paired with a one-shoulder neckline, along
+                      with an eye-catching three-strap open back that you can tie to your desired fit. It is crafted
+                      from super soft satin fabric that shimmers when wearing. Pair with the Kailani Platform Heels to
+                      complete the look.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    FABRIC & CARE
+                  </button>
+                </h3>
+                <div
+                  id="collapseThree"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      Yes to back-talk. <br>
+                      ALEJANDRA is a maxi dress with an elongating silhouette paired with a one-shoulder neckline, along
+                      with an eye-catching three-strap open back that you can tie to your desired fit. It is crafted
+                      from super soft satin fabric that shimmers when wearing. Pair with the Kailani Platform Heels to
+                      complete the look.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingFour">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour"
+                    aria-expanded="false"
+                    aria-controls="collapseFour"
+                  >
+                    FIT & MODEL INFO
+                  </button>
+                </h3>
+                <div
+                  id="collapseFour"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingFour"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      Yes to back-talk. <br>
+                      ALEJANDRA is a maxi dress with an elongating silhouette paired with a one-shoulder neckline, along
+                      with an eye-catching three-strap open back that you can tie to your desired fit. It is crafted
+                      from super soft satin fabric that shimmers when wearing. Pair with the Kailani Platform Heels to
+                      complete the look.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col col-lg-4 col-12">
+        <div class="product-details">
+          <ul class="rating">
+            <li>
+              <div
+                class="Stars"
+                style="--rating: 4.5;"
+                aria-label="Rating of this product is 2.3 out of 5."
+              ></div>
+            </li>
+            <li>24 Reviews</li>
+          </ul>
+          <div class="title">
+            <h2>{{ product.title }}</h2>
+            <span>{{ product.price | money }}</span>
+          </div>
+          <h5>ALEJANDRA</h5>
+          <ul class="stock">
+            <li>Availability</li>
+            <li class="mx-1">|</li>
+            <li>Only 3 item(s) left in stock!</li>
+          </ul>
+          <div class="color">
+            <div class="color-1">
+              <input type="radio" name="color" id="001" class="aggree color1" checked>
+              <label for="001" style="margin:5px">
+                <img src="assets/images/shop/color2.jpg" alt="">
+              </label>
+            </div>
+            <div class="color-1">
+              <input type="radio" name="color" id="002" class="aggree color2">
+              <label for="002" style="margin:5px">
+                <img src="assets/images/shop/color1.jpg" alt="">
+              </label>
+            </div>
+          </div>
+          {% assign unique_size = product.variants | map: 'option2' | uniq %}
+          {% assign productSize = product.options | map: 'Size' %}
+          {% if product.options.size > 0 and product.options contains 'Size' %}
+            <div class="shop-filter-item size">
+              <div class="size-item">
+                {% for size in unique_size %}
+                  <div class="button-group">
+                    <input
+                      type="radio"
+                      id="{{ size }}"
+                      name="size"
+                      class="size1"
+                      value="1"
+                    >
+                    <label class="size-btn" for="{{size}}">{{ size }}</label>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+          <div class="pro-single-btn">
+            <div class="quantity cart-plus-minus">
+              <input type="text" value="1">
+              <div class="dec qtybutton"></div>
+              <div class="inc qtybutton"></div>
+              <div class="dec qtybutton">-</div>
+              <div class="inc qtybutton">+</div>
+            </div>
+            <a href="#" class="theme-btn">Add to cart</a>
+          </div>
+          <div class="buy-btn">
+            <a href="shop.html" class="theme-btn">BUY NOW</a>
+          </div>
+
+          {% if product.metafields.custom.discount %}
+            <div class="offer">
+              <span
+                ><i><img src="{{ 'tag.svg' | asset_url }}" alt="" width="" height="" loading="eager"></i>
+                {{ product.metafields.custom.discount.value -}}
+              </span>
+            </div>
+          {% endif %}
+
+          <div class="shipping-widget">
+            <h2>check shipping time</h2>
+            <p>The expected delivery dates are provided by the courier, and is thus subject to change.</p>
+            <div class="code">
+              <a href="#">WA 98160 <i class="ti-arrow-right"></i></a>
+            </div>
+            <div class="shipping-item">
+              <h5>dELIVERED BY THU, 14 SEPTEMBER 2023 <small>Standard Shipping</small></h5>
+              <span>$9.99</span>
+            </div>
+            <div class="shipping-item">
+              <h5>dELIVERED BY mon, 9 SEPTEMBER 2023 <small>Express Shipping</small></h5>
+              <span>$19.99</span>
+            </div>
+          </div>
+        </div>
+        <!-- end product details -->
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end of container -->
+</section>
