@@ -139,10 +139,6 @@
                       {% assign unique_size = product.variants | map: 'option2' | uniq %}
                       {% assign productSize = product.options | map: 'Size' %}
 
-                      <script>
-                        // console.log({{ product.options | json }});
-                        console.log({{ productSize | json }});
-                      </script>
                       {% if product.options.size > 0 and product.options contains 'Size' %}
                         <div class="shop-filter-item size">
                           <div class="size-item">
