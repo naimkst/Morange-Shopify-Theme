@@ -1,0 +1,153 @@
+<!-- start of product-section -->
+<section class="product-section section-padding">
+  <div class="container">
+    <div class="product-wrap style-1 border-bottom-0 pb-0">
+      <div class="section-title">
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-sm-4 col-12">
+            <h2>{{ section.settings.collection_name }}</h2>
+          </div>
+          <div class="col-lg-4 col-sm-5 col-12">
+            <p>
+              {{ section.settings.collection_description }}
+            </p>
+          </div>
+          <div class="col-lg-2 col-sm-3 col-12">
+            <div class="view-btn-wrap">
+              <a href="{{ section.settings.collection_url }}" class="view-btn">
+                {{- section.settings.collection_button_text -}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row single-product-active owl-carousel">
+        {% for product in section.settings.product_collection %}
+          <div class="product-item">
+            <div class="product-image">
+              <img src="assets/images/product/1.jpg" alt="">
+              <div class="tag">
+                <i><img src="assets/images/product/tag.svg" alt=""></i>
+                <span>20% off at checkout</span>
+              </div>
+              <a class="heart" href="shop.html"><i class="fi flaticon-heart"></i></a>
+              <div class="link">
+                <a href="#"
+                  ><i><img src="assets/images/product/link.svg" alt=""></i>see similar</a
+                >
+              </div>
+              <div class="link">
+                <a href="#"
+                  ><i><img src="assets/images/product/link.svg" alt=""></i>see similar</a
+                >
+              </div>
+            </div>
+            <div class="product-text">
+              <div class="color-name">
+                <div>
+                  <input type="radio" name="color" id="001" class="aggree color1" checked>
+                  <span style="margin:5px"></span>
+                  <input type="radio" name="color" class="aggree color2">
+                  <span style="margin:5px"> </span>
+                </div>
+              </div>
+              <h4><a href="product-single.html">Alejandra</a></h4>
+              <ul class="product-text-sub">
+                <li>One Shoulder Satin Maxi Dress - Red</li>
+                <li class="price">$200.00</li>
+              </ul>
+              <ul class="rating">
+                <li>
+                  <div
+                    class="Stars"
+                    style="--rating: 4.5;"
+                    aria-label="Rating of this product is 2.3 out of 5."
+                  ></div>
+                </li>
+                <li>24 Reviews</li>
+              </ul>
+              <div class="shop-filter-item size">
+                <div class="size-item">
+                  <div class="button-group">
+                    <input type="radio" id="1" name="size" class="size1" value="1">
+                    <label class="size-btn" for="1">xxs</label>
+                  </div>
+                  <div class="button-group">
+                    <input type="radio" id="2" name="size" class="size1" value="1">
+                    <label class="size-btn" for="2">Xs</label>
+                  </div>
+                  <div class="button-group">
+                    <input type="radio" id="3" name="size" class="size1" value="1">
+                    <label class="size-btn" for="3">X</label>
+                  </div>
+                  <div class="button-group">
+                    <input type="radio" id="4" name="size" class="size1" value="1">
+                    <label class="size-btn" for="4">M</label>
+                  </div>
+                  <div class="button-group">
+                    <input type="radio" id="5" name="size" class="size1" value="1">
+                    <label class="size-btn" for="5">L</label>
+                  </div>
+                  <div class="button-group">
+                    <input type="radio" id="6" name="size" class="size1" value="1">
+                    <label class="size-btn" for="6">XL</label>
+                  </div>
+                  <div class="button-group">
+                    <input type="radio" id="7" name="size" class="size1" value="1">
+                    <label class="size-btn" for="7">XXL</label>
+                  </div>
+                  <div class="button-group">
+                    <input type="radio" id="8" name="size" class="size1" value="1">
+                    <label class="size-btn" for="8">3XL</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "collection_name",
+      "label": "Collection Name",
+      "default": "Dresses"
+    },
+    {
+      "type": "text",
+      "id": "collection_description",
+      "label": "Collection Description",
+      "default": "Lorem ipsum is simply dummy text of the printing typesetting industry. Lorem ipsum has been standard dummy text."
+    },
+    {
+      "type": "text",
+      "id": "collection_button_text",
+      "label": "Button Text",
+      "default": "VIEW ALL"
+    },
+    {
+      "type": "url",
+      "id": "collection_url",
+      "label": "Collection Link"
+    },
+    {
+      "type": "collection",
+      "id": "product_collection",
+      "label": "Add Collection"
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Product Slider"
+    }
+  ]
+}
+{% endschema %}
