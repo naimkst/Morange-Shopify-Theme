@@ -1,11 +1,6 @@
 {
   "sections": {
     "banner": {
-      "type": "content",
-      "settings": {
-      }
-    },
-    "161730da-64fa-426a-8a42-2e6ce9f8e705": {
       "type": "hero-banner",
       "settings": {
         "product_banner_title": "Spotlight On",
