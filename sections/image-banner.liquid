@@ -1,0 +1,24 @@
+<!-- start of page-title-section -->
+<section
+  class="page-title"
+  style="background: url({{ section.settings.image_banner | image_url: width: 1920 }}) no-repeat center center;"
+></section>
+<!-- end of page-title-section -->
+{% schema %}
+{
+  "name": "Image Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_banner",
+      "label": "Banner Image"
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Image Banner"
+    }
+  ]
+}
+{% endschema %}

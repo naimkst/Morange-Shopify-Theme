@@ -1,0 +1,37 @@
+<!-- start of breadcrumbs-section -->
+<div class="breadcrumbs-section pt-120">
+  <div class="container">
+    <ul>
+      <li>HOME</li>
+      <li>{{ section.settings.page_title }}</li>
+    </ul>
+    <h3>{{ section.settings.page_title_two }}</h3>
+  </div>
+</div>
+<!-- end of breadcrumbs-section -->
+
+{% schema %}
+{
+  "name": "Product Breadcrumbs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page Title",
+      "default": "OUTWEAR"
+    },
+    {
+      "type": "text",
+      "id": "page_title_two",
+      "label": "Page Title Two",
+      "default": "Outwear"
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Product Breadcrumbs"
+    }
+  ]
+}
+{% endschema %}
