@@ -18,6 +18,7 @@
           "settings": {
             "hero_slug": "This month from $29",
             "hero_Title": "New Collection",
+            "hero_image": "shopify:\/\/shop_images\/Frame_18_1.png",
             "hero_url": "",
             "hero_button_text": "Shop collection"
           }
@@ -27,6 +28,7 @@
           "settings": {
             "hero_slug": "This month from $29",
             "hero_Title": "New Collection",
+            "hero_image": "shopify:\/\/shop_images\/Frame_6436.png",
             "hero_url": "",
             "hero_button_text": "Shop collection"
           }
