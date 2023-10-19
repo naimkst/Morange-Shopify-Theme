@@ -8,7 +8,7 @@
           "settings": {
             "hero_slug": "This month from $29",
             "hero_Title": "New Collection",
-            "hero_image": "shopify:\/\/shop_images\/p-banner.jpg",
+            "hero_image": "shopify:\/\/shop_images\/Section_4.png",
             "hero_url": "",
             "hero_button_text": "Shop collection"
           }
@@ -18,7 +18,7 @@
           "settings": {
             "hero_slug": "This month from $29",
             "hero_Title": "New Collection",
-            "hero_image": "shopify:\/\/shop_images\/theme_cover_image.jpg",
+            "hero_image": "shopify:\/\/shop_images\/Frame_18_1.png",
             "hero_url": "",
             "hero_button_text": "Shop collection"
           }
@@ -28,7 +28,7 @@
           "settings": {
             "hero_slug": "This month from $29",
             "hero_Title": "New Collection",
-            "hero_image": "shopify:\/\/shop_images\/theme_cover_image.jpg",
+            "hero_image": "shopify:\/\/shop_images\/Frame_6436.png",
             "hero_url": "",
             "hero_button_text": "Shop collection"
           }
@@ -155,7 +155,6 @@
         "banner_title": "Fall Dresses",
         "banner_button_texr": "Shop Now",
         "banner_button_url": "",
-        "banner_image": "shopify:\/\/shop_images\/p-banner.jpg",
         "featured_products": [
           "the-3p-fulfilled-snowboard",
           "the-collection-snowboard-hydrogen"
@@ -169,8 +168,7 @@
         "winter_title": "WINTER Collection",
         "winter_descripiton": "Lorem ipsum is simply dummy text of the printing typesetting industry. Lorem ipsum has been standard dummy text. Lorem ipsum has been standard.",
         "winter_button_text": "Shop Now",
-        "banner_button_url": "",
-        "banner_image": "shopify:\/\/shop_images\/banner.jpg"
+        "banner_button_url": ""
       }
     },
     "f8b1cace-f849-49b7-aa8f-fe08a6c69bad": {
@@ -179,7 +177,6 @@
         "template--21352289567002__f8b1cace-f849-49b7-aa8f-fe08a6c69bad-slider-1": {
           "type": "slider",
           "settings": {
-            "service_image": "shopify:\/\/shop_images\/1.svg",
             "service_title": "FREE DELIVERY",
             "service_description": "For orders over $60"
           }
@@ -187,7 +184,6 @@
         "22b4e5d4-8f2c-4beb-8870-8a16e9bdd917": {
           "type": "slider",
           "settings": {
-            "service_image": "shopify:\/\/shop_images\/6.svg",
             "service_title": "AFTER-SALE SERVICE",
             "service_description": "24\/7 support"
           }
@@ -195,7 +191,6 @@
         "21a7735a-1947-43e2-9c09-f66f9b3a1068": {
           "type": "slider",
           "settings": {
-            "service_image": "shopify:\/\/shop_images\/3.svg",
             "service_title": "BUYER PROTECTION",
             "service_description": "100% secure payment system"
           }
@@ -203,7 +198,6 @@
         "3dddf1e0-d3c8-4c55-9b6d-dc4fb0556387": {
           "type": "slider",
           "settings": {
-            "service_image": "shopify:\/\/shop_images\/4.svg",
             "service_title": "SPECIAL DISCOUNTS",
             "service_description": "Guaranteed saving all the time"
           }
@@ -224,37 +218,31 @@
         "template--21352289567002__b30c5717-b8c2-4f4e-bdc8-cf685d63a1c0-image-1": {
           "type": "image",
           "settings": {
-            "instagram_image": "shopify:\/\/shop_images\/7_0de4a439-9a87-4956-bf43-32fd2e7f29bc.jpg"
           }
         },
         "a82747b0-eb8c-4744-bd92-ad1e077812bd": {
           "type": "image",
           "settings": {
-            "instagram_image": "shopify:\/\/shop_images\/5_4461627b-2f3a-4180-b466-d727a31800ef.jpg"
           }
         },
         "9ba9fb5d-c749-4f5a-8372-67c901a06bcf": {
           "type": "image",
           "settings": {
-            "instagram_image": "shopify:\/\/shop_images\/1_6a88ad9a-744c-4884-b641-83a5b8c6586e.jpg"
           }
         },
         "2842b323-d25e-4daa-bf3d-ae73b3923298": {
           "type": "image",
           "settings": {
-            "instagram_image": "shopify:\/\/shop_images\/4_a485c530-055d-4c0c-86f6-6750f9a9380c.jpg"
           }
         },
         "361c3050-bd0d-458c-9433-8e826a295c7a": {
           "type": "image",
           "settings": {
-            "instagram_image": "shopify:\/\/shop_images\/6_cf2caa6a-0bcd-4ba1-afd7-220719a4ef22.jpg"
           }
         },
         "dbaf958f-40a8-4b5a-b123-0fa6baee2a3d": {
           "type": "image",
           "settings": {
-            "instagram_image": "shopify:\/\/shop_images\/2_918631e8-5023-4e18-a817-7d00d77dd402.jpg"
           }
         }
       },
