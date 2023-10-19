@@ -8,19 +8,15 @@
         "banner_image": "shopify:\/\/shop_images\/slide-4.jpg"
       }
     },
-    "970ef128-f5bf-4774-bf58-b41c646010c7": {
-      "type": "product-slider",
+    "f2a9aedb-3c8b-429f-b75d-3fbbf0c4902e": {
+      "type": "product",
       "settings": {
-        "collection_name": "Dresses",
-        "collection_description": "Lorem ipsum is simply dummy text of the printing typesetting industry. Lorem ipsum has been standard dummy text.",
-        "collection_button_text": "VIEW ALL",
-        "collection_url": "#",
-        "product_collection": "automated-collection"
+        "title": "Product Collections"
       }
     }
   },
   "order": [
     "banner",
-    "970ef128-f5bf-4774-bf58-b41c646010c7"
+    "f2a9aedb-3c8b-429f-b75d-3fbbf0c4902e"
   ]
 }
