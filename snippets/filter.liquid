@@ -10,7 +10,7 @@
                   <option value="">Categories</option>
                   {% for pdcollection in collections %}
                     <option
-                      value="{{ pdcollection.title }}"
+                      value="{{ pdcollection.url }}"
                       {% if pdcollection.url == collection.url %}
                         selected
                       {% endif %}
@@ -20,40 +20,61 @@
                   {% endfor %}
                 </select>
               </div>
-              <div class="filter-item">
-                <select>
-                  <option value="">Color</option>
-                  <option value="">Black</option>
-                  <option value="">White</option>
-                  <option value="">Red</option>
-                </select>
-              </div>
-              <div class="filter-item">
-                <select>
-                  <option value="">Size</option>
-                  <option value="">L</option>
-                  <option value="">M</option>
-                  <option value="">Xl</option>
-                  <option value="">XXl</option>
-                  <option value="">XXXl</option>
-                </select>
-              </div>
-              <div class="filter-item">
-                <select>
-                  <option value="">occasion</option>
-                  <option value="">occasion</option>
-                  <option value="">occasion</option>
-                  <option value="">occasion</option>
-                </select>
-              </div>
-              <div class="filter-item">
-                <select>
-                  <option value="">fabric</option>
-                  <option value="">fabric</option>
-                  <option value="">fabric</option>
-                  <option value="">fabric</option>
-                </select>
-              </div>
+              {%- for filter in collection.filters -%}
+                <div class="filter-item">
+                  <select onchange="filterName(this, {{ forloop.index }})" id="filter_{{ forloop.index }}">
+                    <option value="">{{ filter.label }}</option>
+                    {%- case filter.type -%}
+                      {%- when 'list' -%}
+                        {%- for filter_value in filter.values -%}
+                          <option
+                            value="{{ filter_value.value }}"
+                            data-param_name="{{ filter_value.param_name }}"
+                            {% if filter_value.active == true %}
+                              selected
+                            {% endif %}
+                          >
+                            {{ filter_value.label }}
+                          </option>
+                        {%- endfor -%}
+                    {%- endcase -%}
+                  </select>
+                  <input
+                    type="hidden"
+                    name="{{ filter.param_name }}"
+                    id="selected_param_name_{{ forloop.index }}"
+                    value=""
+                  >
+                </div>
+              {%- endfor -%}
+              {% comment %}
+                <div class="filter-item">
+                  <select>
+                    <option value="">Size</option>
+                    <option value="">L</option>
+                    <option value="">M</option>
+                    <option value="">Xl</option>
+                    <option value="">XXl</option>
+                    <option value="">XXXl</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <select>
+                    <option value="">occasion</option>
+                    <option value="">occasion</option>
+                    <option value="">occasion</option>
+                    <option value="">occasion</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <select>
+                    <option value="">fabric</option>
+                    <option value="">fabric</option>
+                    <option value="">fabric</option>
+                    <option value="">fabric</option>
+                  </select>
+                </div>
+              {% endcomment %}
             </div>
           </div>
           <div class="col-lg-4">

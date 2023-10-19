@@ -17,3 +17,20 @@ function openPage(pageName, elmnt, color) {
   document.getElementById(pageName).style.display = 'block';
   elmnt.classList.add('react-tabs__tab--selected');
 }
+function filterName(selectElement, elementId) {
+  var selectId = selectElement.id;
+  var select = document.getElementById(selectId);
+  var form = document.getElementById('filterFrom');
+  var hiddenInput = document.getElementById('selected_param_name_' + elementId);
+  var selectedOption = select.options[select.selectedIndex];
+  var selectedValue = selectedOption.value;
+  var param_name = selectedOption.getAttribute('data-param_name');
+  // form.setAttribute('name', param_name);
+  // form.submit();
+  // Submit the form
+  hiddenInput.setAttribute('name', param_name);
+  hiddenInput.setAttribute('value', selectedValue);
+
+  document.getElementById('filterFrom').submit();
+  console.log(hiddenInput);
+}

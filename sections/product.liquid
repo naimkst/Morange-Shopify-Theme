@@ -5,107 +5,112 @@
   <div class="container">
     <div class="product-wrap style-1 border-0 pb-0">
       <div class="row">
-        {% for product in collections.all.products %}
-          <div class="col-lg-3 col-md-6 col-12">
-            <div class="product-item">
-              <div class="product-image">
-                <img
-                  src="{{ product.featured_image | image_url: height: 378, crop: 'center' }}"
-                  alt=""
-                  height=""
-                  width=""
-                  loading="eager"
-                >
-                {% if product.metafields.custom.discount.value %}
-                  <div class="tag">
-                    <i><img src="{{ 'tag.svg' | asset_url }}" alt="" width="" height="" loading="eager"></i>
-                    <span>{{ product.metafields.custom.discount.value }}</span>
-                  </div>
-                {% endif %}
-                <a class="heart" href="#"><i class="fi flaticon-heart"></i></a>
-                <div class="link">
-                  <a href="#"
-                    ><i><img src="{{ 'link.svg' | asset_url }}" alt="" width="" height="" loading="eager"></i>see
-                    similar</a
-                  >
-                </div>
-                <div class="link">
-                  <a href="#"
-                    ><i><img src="{{ 'link.svg' | asset_url }}" alt="" width="" height="" loading="eager"></i>see
-                    similar</a
-                  >
-                </div>
-              </div>
-              <div class="product-text">
-                {% if product.options.size > 0 and product.options.first == 'Color' %}
-                  <div class="color-name">
-                    <div>
-                      {% assign unique_colors = product.variants | map: 'option1' | uniq %}
-                      {% for color in unique_colors %}
-                        <input
-                          type="radio"
-                          name="color"
-                          id="001-{{ color }}"
-                          class="aggree color1"
-                          checked
-                          style="background-color: {{ color }}"
-                        >
-                        <span style="margin:5px"></span>
-                      {% endfor %}
-                    </div>
-                  </div>
-                {% endif %}
-                <h4>
-                  <a href="{{ product.url }}">{{ product.title }}</a>
-                </h4>
-                <ul class="product-text-sub">
-                  <li>{{ product.description | truncate: 35 | strip_html }}</li>
-                  <li class="price">{{ product.price | money }}</li>
-                </ul>
-                <ul class="rating">
-                  <li>
-                    <div
-                      class="Stars"
-                      style="--rating: 4.5;"
-                      aria-label="Rating of this product is 2.3 out of 5."
-                    ></div>
-                  </li>
-                  <li>24 Reviews</li>
-                </ul>
-                {% assign unique_size = product.variants | map: 'option2' | uniq %}
-                {% assign productSize = product.options | map: 'Size' %}
+        {% assign products_by_price = collection.products %}
+        {% assign collection = collection %}
 
-                {% if product.options.size > 0 and product.options contains 'Size' %}
-                  <div class="shop-filter-item size">
-                    <div class="size-item">
-                      {% for size in unique_size %}
-                        <div class="button-group">
+        {% paginate collection.products by 500 %}
+          {% for product in collection.products %}
+            <div class="col-lg-3 col-md-6 col-12">
+              <div class="product-item">
+                <div class="product-image">
+                  <img
+                    src="{{ product.featured_image | image_url: height: 378, crop: 'center' }}"
+                    alt=""
+                    height=""
+                    width=""
+                    loading="eager"
+                  >
+                  {% if product.metafields.custom.discount.value %}
+                    <div class="tag">
+                      <i><img src="{{ 'tag.svg' | asset_url }}" alt="" width="" height="" loading="eager"></i>
+                      <span>{{ product.metafields.custom.discount.value }}</span>
+                    </div>
+                  {% endif %}
+                  <a class="heart" href="#"><i class="fi flaticon-heart"></i></a>
+                  <div class="link">
+                    <a href="#"
+                      ><i><img src="{{ 'link.svg' | asset_url }}" alt="" width="" height="" loading="eager"></i>see
+                      similar</a
+                    >
+                  </div>
+                  <div class="link">
+                    <a href="#"
+                      ><i><img src="{{ 'link.svg' | asset_url }}" alt="" width="" height="" loading="eager"></i>see
+                      similar</a
+                    >
+                  </div>
+                </div>
+                <div class="product-text">
+                  {% if product.options.size > 0 and product.options.first == 'Color' %}
+                    <div class="color-name">
+                      <div>
+                        {% assign unique_colors = product.variants | map: 'option1' | uniq %}
+                        {% for color in unique_colors %}
                           <input
                             type="radio"
-                            id="{{ size }}"
-                            name="size"
-                            class="size1"
-                            value="1"
+                            name="color"
+                            id="001-{{ color }}"
+                            class="aggree color1"
+                            checked
+                            style="background-color: {{ color }}"
                           >
-                          <label class="size-btn" for="{{size}}">{{ size }}</label>
-                        </div>
-                      {% endfor %}
+                          <span style="margin:5px"></span>
+                        {% endfor %}
+                      </div>
                     </div>
-                  </div>
-                {% endif %}
-              </div>
-            </div>
-          </div>
+                  {% endif %}
+                  <h4>
+                    <a href="{{ product.url }}">{{ product.title }}</a>
+                  </h4>
+                  <ul class="product-text-sub">
+                    <li>{{ product.description | truncate: 35 | strip_html }}</li>
+                    <li class="price">{{ product.price | money }}</li>
+                  </ul>
+                  <ul class="rating">
+                    <li>
+                      <div
+                        class="Stars"
+                        style="--rating: 4.5;"
+                        aria-label="Rating of this product is 2.3 out of 5."
+                      ></div>
+                    </li>
+                    <li>24 Reviews</li>
+                  </ul>
+                  {% assign unique_size = product.variants | map: 'option2' | uniq %}
+                  {% assign productSize = product.options | map: 'Size' %}
 
-          {% if forloop.index == 7 %}
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="product-item offer-banner s4">
-                <h2>10% <span>OFF!</span></h2>
-                <p>eXTRA 10% OFF TODAY! Automatically applied at checkout. This is only for you.</p>
+                  {% if product.options.size > 0 and product.options contains 'Size' %}
+                    <div class="shop-filter-item size">
+                      <div class="size-item">
+                        {% for size in unique_size %}
+                          <div class="button-group">
+                            <input
+                              type="radio"
+                              id="{{ size }}"
+                              name="size"
+                              class="size1"
+                              value="1"
+                            >
+                            <label class="size-btn" for="{{size}}">{{ size }}</label>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
               </div>
             </div>
-          {% endif %}
-        {% endfor %}
+
+            {% if forloop.index == 7 %}
+              <div class="col-lg-3 col-md-6 col-12">
+                <div class="product-item offer-banner s4">
+                  <h2>10% <span>OFF!</span></h2>
+                  <p>eXTRA 10% OFF TODAY! Automatically applied at checkout. This is only for you.</p>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endpaginate %}
       </div>
       <div class="pagination-wrapper">
         <ul class="pg-pagination">
