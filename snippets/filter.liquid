@@ -1,0 +1,84 @@
+<form class="filter-form" id="filterFrom">
+  <div class="filter-area">
+    <div class="container">
+      <div class="filter-top">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="filter-item-wrap">
+              <div class="filter-item">
+                <select onchange="location = this.value">
+                  <option value="">Categories</option>
+                  {% for pdcollection in collections %}
+                    <option
+                      value="{{ pdcollection.title }}"
+                      {% if pdcollection.url == collection.url %}
+                        selected
+                      {% endif %}
+                    >
+                      {{ pdcollection.title }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="filter-item">
+                <select>
+                  <option value="">Color</option>
+                  <option value="">Black</option>
+                  <option value="">White</option>
+                  <option value="">Red</option>
+                </select>
+              </div>
+              <div class="filter-item">
+                <select>
+                  <option value="">Size</option>
+                  <option value="">L</option>
+                  <option value="">M</option>
+                  <option value="">Xl</option>
+                  <option value="">XXl</option>
+                  <option value="">XXXl</option>
+                </select>
+              </div>
+              <div class="filter-item">
+                <select>
+                  <option value="">occasion</option>
+                  <option value="">occasion</option>
+                  <option value="">occasion</option>
+                  <option value="">occasion</option>
+                </select>
+              </div>
+              <div class="filter-item">
+                <select>
+                  <option value="">fabric</option>
+                  <option value="">fabric</option>
+                  <option value="">fabric</option>
+                  <option value="">fabric</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="filter-item-wrap right">
+              <div class="filter-item">
+                <select>
+                  <option value="">Featured</option>
+                  <option value="">Featured</option>
+                  <option value="">Featured</option>
+                  <option value="">Featured</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="filter-result">
+          <ul>
+            <li>OUTWEAR <i class="ti-close"></i></li>
+            <li><span class="black" style="background: #000;"></span> bLACK <i class="ti-close"></i></li>
+            <li class="clear"><i class="ti-close"></i> clear FILTERS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
