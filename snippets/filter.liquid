@@ -1,4 +1,118 @@
-<form class="filter-form" id="filterFrom">
+<style>
+  .filter-area .filter-top {
+    border-bottom: 1px solid #bdbabe;
+    padding-bottom: 20px;
+  }
+  .filter-area .filter-top .filter-item-wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 991px) {
+    .filter-area .filter-top .filter-item-wrap {
+      justify-content: center;
+    }
+  }
+  .filter-area .filter-top .filter-item-wrap .filter-item {
+    width: 150px;
+  }
+  .filter-area .filter-top .filter-item-wrap .filter-item:first-child select {
+    padding-left: 0;
+  }
+  .filter-area .filter-top .filter-item-wrap .filter-item .toogle-click {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: uppercase;
+  }
+  .filter-area .filter-top .filter-item-wrap .filter-item .toogle-click:before {
+    position: absolute;
+    right: 25px;
+    top: 2px;
+    content: '\e64b';
+    font-family: 'themify';
+    font-size: 12px;
+  }
+  .filter-area .filter-top .filter-item-wrap .filter-item .dropdown {
+    display: none;
+    width: 150px;
+    padding: 20px 10px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 12, 55, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    position: absolute;
+    z-index: 9999;
+    background: white;
+  }
+  .filter-area .filter-top .filter-item-wrap .filter-item .dropdown li {
+    font-size: 15px;
+    text-transform: capitalize;
+  }
+  .filter-area .filter-top .filter-item-wrap .filter-item .dropdown li + li {
+    padding-top: 10px;
+  }
+  .filter-area .filter-top .filter-item-wrap.right {
+    justify-content: flex-end;
+  }
+  @media (max-width: 991px) {
+    .filter-area .filter-top .filter-item-wrap.right {
+      justify-content: center;
+    }
+  }
+  .filter-area .filter-result ul {
+    display: flex;
+    margin-top: 20px;
+  }
+  @media (max-width: 991px) {
+    .filter-area .filter-result ul {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+  .filter-area .filter-result ul li {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: uppercase;
+    padding: 10px;
+    border: 1px solid rgba(215, 215, 215, 0.6);
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .filter-area .filter-result ul li i {
+    margin-left: 10px;
+  }
+  .filter-area .filter-result ul li + li {
+    margin-left: 15px;
+  }
+  .filter-area .filter-result ul li span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  .filter-area .filter-result ul li.clear {
+    background: #ebe9ea;
+  }
+  .filter-area .filter-result ul li.clear i {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+  .filter-form {
+    margin-top: 40px;
+  }
+  .filter-form .filter-item {
+    margin: 10px 0px;
+  }
+</style>
+
+<!-- fiter -->
+<form class="filter-form">
   <div class="filter-area">
     <div class="container">
       <div class="filter-top">
@@ -6,73 +120,139 @@
           <div class="col-lg-8">
             <div class="filter-item-wrap">
               <div class="filter-item">
-                <select onchange="location = this.value">
-                  <option value="">Categories</option>
-                  {% for pdcollection in collections %}
-                    <option
-                      value="{{ pdcollection.url }}"
-                      {% if pdcollection.url == collection.url %}
-                        selected
-                      {% endif %}
-                    >
-                      {{ pdcollection.title }}
-                    </option>
-                  {% endfor %}
-                </select>
+                <span class="toogle-click">Categories</span>
+                <div class="dropdown">
+                  <ul class="dropdown-wrap">
+                    {% for pdcollection in collections %}
+                      <li class="dress-item">
+                        <input
+                          id="dress-list-1"
+                          type="checkbox"
+                          name="dress-list-1"
+                          id="{{ pdcollection.id }}"
+                          {% if pdcollection.url == collection.url %}
+                            checked
+                          {% endif %}
+                        >
+                        <label for="dress-list-1" for="{{ pdcollection.id }}"
+                          ><a href="{{pdcollection.url}}">
+                            {{ pdcollection.title }}
+                          </a></label
+                        >
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
               </div>
+
               {%- for filter in collection.filters -%}
                 <div class="filter-item">
-                  <select onchange="filterName(this, {{ forloop.index }})" id="filter_{{ forloop.index }}">
-                    <option value="">{{ filter.label }}</option>
-                    {%- case filter.type -%}
-                      {%- when 'list' -%}
-                        {%- for filter_value in filter.values -%}
-                          <option
+                  <span class="toogle-click">{{ filter.label }}</span>
+                  <div class="dropdown">
+                    <ul class="dropdown-wrap">
+                      {%- for filter_value in filter.values -%}
+                        <li class="color-item">
+                          <input
+                            onchange="this.form.submit()"
+                            class="form-check-input"
+                            type="checkbox"
+                            id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                            name="{{ filter_value.param_name }}"
                             value="{{ filter_value.value }}"
-                            data-param_name="{{ filter_value.param_name }}"
                             {% if filter_value.active == true %}
-                              selected
+                              checked
                             {% endif %}
                           >
-                            {{ filter_value.label }}
-                          </option>
-                        {%- endfor -%}
-                    {%- endcase -%}
-                  </select>
-                  <input
-                    type="hidden"
-                    name="{{ filter.param_name }}"
-                    id="selected_param_name_{{ forloop.index }}"
-                    value=""
-                  >
+                          <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
+                            {{ filter_value.label -}}
+                          </label>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
                 </div>
               {%- endfor -%}
               {% comment %}
                 <div class="filter-item">
-                  <select>
-                    <option value="">Size</option>
-                    <option value="">L</option>
-                    <option value="">M</option>
-                    <option value="">Xl</option>
-                    <option value="">XXl</option>
-                    <option value="">XXXl</option>
-                  </select>
+                  <span class="toogle-click">Size</span>
+                  <div class="dropdown">
+                    <ul class="dropdown-wrap">
+                      <li class="size-item">
+                        <input id="size-list-1" type="checkbox" name="size-list-1">
+                        <label for="size-list-1">L</label>
+                      </li>
+                      <li class="size-item">
+                        <input id="size-list-2" type="checkbox" name="size-list-1">
+                        <label for="size-list-2">M</label>
+                      </li>
+                      <li class="size-item">
+                        <input id="size-list-3" type="checkbox" name="size-list-1">
+                        <label for="size-list-3">XL</label>
+                      </li>
+                      <li class="size-item">
+                        <input id="size-list-4" type="checkbox" name="size-list-1">
+                        <label for="size-list-4">XXL</label>
+                      </li>
+                      <li class="size-item">
+                        <input id="size-list-5" type="checkbox" name="size-list-1">
+                        <label for="size-list-5">XXXL</label>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div class="filter-item">
-                  <select>
-                    <option value="">occasion</option>
-                    <option value="">occasion</option>
-                    <option value="">occasion</option>
-                    <option value="">occasion</option>
-                  </select>
+                  <span class="toogle-click">occasion</span>
+                  <div class="dropdown">
+                    <ul class="dropdown-wrap">
+                      <li class="oction-item">
+                        <input id="oction-list-1" type="checkbox" name="oction-list-1">
+                        <label for="oction-list-1">occasion</label>
+                      </li>
+                      <li class="oction-item">
+                        <input id="oction-list-2" type="checkbox" name="oction-list-1">
+                        <label for="oction-list-2">occasion</label>
+                      </li>
+                      <li class="oction-item">
+                        <input id="oction-list-3" type="checkbox" name="oction-list-1">
+                        <label for="oction-list-3">occasion</label>
+                      </li>
+                      <li class="oction-item">
+                        <input id="oction-list-4" type="checkbox" name="oction-list-1">
+                        <label for="oction-list-4">occasion</label>
+                      </li>
+                      <li class="oction-item">
+                        <input id="oction-list-5" type="checkbox" name="oction-list-1">
+                        <label for="oction-list-5">occasion</label>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div class="filter-item">
-                  <select>
-                    <option value="">fabric</option>
-                    <option value="">fabric</option>
-                    <option value="">fabric</option>
-                    <option value="">fabric</option>
-                  </select>
+                  <span class="toogle-click">fabric</span>
+                  <div class="dropdown">
+                    <ul class="dropdown-wrap">
+                      <li class="fabric-item">
+                        <input id="fabric-list-1" type="checkbox" name="fabric-list-1">
+                        <label for="fabric-list-1">fabric</label>
+                      </li>
+                      <li class="fabric-item">
+                        <input id="fabric-list-2" type="checkbox" name="fabric-list-1">
+                        <label for="fabric-list-2">fabric</label>
+                      </li>
+                      <li class="fabric-item">
+                        <input id="fabric-list-3" type="checkbox" name="fabric-list-1">
+                        <label for="fabric-list-3">fabric</label>
+                      </li>
+                      <li class="fabric-item">
+                        <input id="fabric-list-4" type="checkbox" name="fabric-list-1">
+                        <label for="fabric-list-4">fabric</label>
+                      </li>
+                      <li class="fabric-item">
+                        <input id="fabric-list-5" type="checkbox" name="fabric-list-1">
+                        <label for="fabric-list-5">fabric</label>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               {% endcomment %}
             </div>
@@ -80,12 +260,31 @@
           <div class="col-lg-4">
             <div class="filter-item-wrap right">
               <div class="filter-item">
-                <select>
-                  <option value="">Featured</option>
-                  <option value="">Featured</option>
-                  <option value="">Featured</option>
-                  <option value="">Featured</option>
-                </select>
+                <span class="toogle-click">Featured</span>
+                <div class="dropdown">
+                  <ul class="dropdown-wrap">
+                    <li class="Featured-item">
+                      <input id="Featured-list-1" type="checkbox" name="Featured-list-1">
+                      <label for="Featured-list-1">Featured</label>
+                    </li>
+                    <li class="Featured-item">
+                      <input id="Featured-list-2" type="checkbox" name="Featured-list-1">
+                      <label for="Featured-list-2">Featured</label>
+                    </li>
+                    <li class="Featured-item">
+                      <input id="Featured-list-3" type="checkbox" name="Featured-list-1">
+                      <label for="Featured-list-3">Featured</label>
+                    </li>
+                    <li class="Featured-item">
+                      <input id="Featured-list-4" type="checkbox" name="Featured-list-1">
+                      <label for="Featured-list-4">Featured</label>
+                    </li>
+                    <li class="Featured-item">
+                      <input id="Featured-list-5" type="checkbox" name="Featured-list-1">
+                      <label for="Featured-list-5">Featured</label>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -103,3 +302,4 @@
     </div>
   </div>
 </form>
+<!-- fiter -->

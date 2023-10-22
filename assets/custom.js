@@ -31,6 +31,14 @@ function filterName(selectElement, elementId) {
   hiddenInput.setAttribute('name', param_name);
   hiddenInput.setAttribute('value', selectedValue);
 
+  hiddenInput.value = selectedValue;
+
   document.getElementById('filterFrom').submit();
+  return true;
   console.log(hiddenInput);
 }
+$('.toogle-click').click(function () {
+  var $toggle = $(this).next('.dropdown');
+  $('.dropdown').not($toggle).slideUp('slow'); // Slide up all other elements
+  $toggle.slideToggle('slow'); // Slide toggle the selected element
+});
