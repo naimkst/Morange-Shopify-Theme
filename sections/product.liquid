@@ -4,11 +4,11 @@
 <section class="product-section section-padding pt-0">
   <div class="container">
     <div class="product-wrap style-1 border-0 pb-0">
-      <div class="row">
-        {% assign products_by_price = collection.products %}
-        {% assign collection = collection %}
+      {% paginate collection.products by 11 %}
+        <div class="row">
+          {% assign products_by_price = collection.products %}
+          {% assign collection = collection %}
 
-        {% paginate collection.products by 500 %}
           {% for product in collection.products %}
             <div class="col-lg-3 col-md-6 col-12">
               <div class="product-item">
@@ -110,24 +110,28 @@
               </div>
             {% endif %}
           {% endfor %}
-        {% endpaginate %}
-      </div>
-      <div class="pagination-wrapper">
-        <ul class="pg-pagination">
-          <li>
-            <a href="#" aria-label="Previous"> <i class="fi ti-angle-left"></i> Prev </a>
-          </li>
-          <li><a href="#">1</a></li>
-          <li class="active"><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">...</a></li>
-          <li><a href="#">8</a></li>
-          <li>
-            <a href="#" aria-label="Next"> Next <i class="fi ti-angle-right"></i> </a>
-          </li>
-        </ul>
-      </div>
+        </div>
+        <div class="pagination-wrapper">
+          <ul class="pg-pagination">
+            {% if paginate.previous.is_link %}
+              <li>
+                <a href="{{ paginate.previous.url }}" aria-label="Previous"> <i class="fi ti-angle-left"></i> Prev </a>
+              </li>
+            {% endif %}
+            {% for part in paginate.parts %}
+              <li class="{% if part.title == paginate.current_page %} active {% endif %}">
+                <a href="{{ part.url }}">{{ part.title | escape }}</a>
+              </li>
+            {% endfor %}
+
+            {% if paginate.next.is_link %}
+              <li>
+                <a href="{{ paginate.next.url }}" aria-label="Next"> Next <i class="fi ti-angle-right"></i> </a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      {% endpaginate %}
     </div>
   </div>
 </section>

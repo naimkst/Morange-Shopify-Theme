@@ -36,9 +36,29 @@
     font-family: 'themify';
     font-size: 12px;
   }
+
+  .filter-area .filter-top .filter-item-wrap .filter-item .toogle-clicks {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: uppercase;
+  }
+  .filter-area .filter-top .filter-item-wrap .filter-item .toogle-clicks:before {
+    position: absolute;
+    right: 25px;
+    top: 2px;
+    content: '\e64b';
+    font-family: 'themify';
+    font-size: 12px;
+  }
+
   .filter-area .filter-top .filter-item-wrap .filter-item .dropdown {
     display: none;
-    width: 150px;
+    min-width: 150px;
     padding: 20px 10px;
     box-shadow: 0px 2px 8px 0px rgba(0, 12, 55, 0.1);
     border-radius: 10px;
@@ -108,6 +128,12 @@
   }
   .filter-form .filter-item {
     margin: 10px 0px;
+  }
+  li.dress-item a {
+    color: #7e7f8a;
+  }
+  .filter-area {
+    padding-bottom: 0;
   }
 </style>
 
@@ -258,44 +284,116 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <div class="filter-item-wrap right">
-              <div class="filter-item">
-                <span class="toogle-click">Featured</span>
-                <div class="dropdown">
-                  <ul class="dropdown-wrap">
-                    <li class="Featured-item">
-                      <input id="Featured-list-1" type="checkbox" name="Featured-list-1">
-                      <label for="Featured-list-1">Featured</label>
-                    </li>
-                    <li class="Featured-item">
-                      <input id="Featured-list-2" type="checkbox" name="Featured-list-1">
-                      <label for="Featured-list-2">Featured</label>
-                    </li>
-                    <li class="Featured-item">
-                      <input id="Featured-list-3" type="checkbox" name="Featured-list-1">
-                      <label for="Featured-list-3">Featured</label>
-                    </li>
-                    <li class="Featured-item">
-                      <input id="Featured-list-4" type="checkbox" name="Featured-list-1">
-                      <label for="Featured-list-4">Featured</label>
-                    </li>
-                    <li class="Featured-item">
-                      <input id="Featured-list-5" type="checkbox" name="Featured-list-1">
-                      <label for="Featured-list-5">Featured</label>
-                    </li>
-                  </ul>
+            <form class="woocommerce-ordering" method="get">
+              <div class="filter-item-wrap right">
+                <div class="filter-item">
+                  <span class="toogle-click">Featured</span>
+                  <div class="dropdown">
+                    <ul class="dropdown-wrap">
+                      <li class="Featured-item">
+                        <input
+                          onchange="this.form.submit()"
+                          value=""
+                          id="menu_order"
+                          type="checkbox"
+                          name="sort_by"
+                        >
+                        <label for="menu_order">Default sorting</label>
+                      </li>
+                      <li class="Featured-item">
+                        <input
+                          onchange="this.form.submit()"
+                          value="best-selling"
+                          id="best-selling"
+                          type="checkbox"
+                          name="sort_by"
+                        >
+                        <label for="best-selling">Sort by popularity</label>
+                      </li>
+                      <li class="Featured-item">
+                        <input
+                          onchange="this.form.submit()"
+                          value="title-ascending"
+                          id="title-ascending"
+                          type="checkbox"
+                          name="sort_by"
+                        >
+                        <label for="title-ascending">Alphabetically, A-Z</label>
+                      </li>
+                      <li class="Featured-item">
+                        <input
+                          onchange="this.form.submit()"
+                          value="created-ascending"
+                          id="created-ascending"
+                          type="checkbox"
+                          name="sort_by"
+                        >
+                        <label for="created-ascending">Sort by Newness</label>
+                      </li>
+                      <li class="Featured-item">
+                        <input
+                          onchange="this.form.submit()"
+                          value="price-ascending"
+                          id="price-ascending"
+                          type="checkbox"
+                          name="sort_by"
+                        >
+                        <label for="price-ascending">Sort by price: low to high</label>
+                      </li>
+                      <li class="Featured-item">
+                        <input
+                          onchange="this.form.submit()"
+                          value="price-descending"
+                          id="price-descending"
+                          type="checkbox"
+                          name="sort_by"
+                        >
+                        <label for="price-descending">Sort by price: high to low</label>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="filter-result">
           <ul>
-            <li>OUTWEAR <i class="ti-close"></i></li>
-            <li><span class="black" style="background: #000;"></span> bLACK <i class="ti-close"></i></li>
-            <li class="clear"><i class="ti-close"></i> clear FILTERS</li>
+            {%- for filter in collection.filters -%}
+              {%- if filter.type == 'price_range' -%}
+                {%- if filter.min_value.value != null or filter.max_value.value != null -%}
+                  <a class="active-filters__remove-filter" href="{{ filter.url_to_remove }}">
+                    {%- assign min_value = filter.min_value.value | default: 0 -%}
+                    {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+                    {{ min_value | money }} - {{ max_value | money }} X
+                  </a>
+                {%- endif -%}
+              {%- else -%}
+                {%- for filter_value in filter.active_values -%}
+                  {% assign isFilter = filter.active_values.size %}
+                  <li>
+                    {{ filter_value.label }}
+                    <i class="close-filter-item fas fa-times"></i>
+                    <a class="active-filters__remove-filter" href="{{ filter_value.url_to_remove }}">
+                      <i class="ti-close"></i
+                    ></a>
+                  </li>
+                {%- endfor -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {% if isFilter != null %}
+              <li class="clear">
+                <a
+                  href="{{ collection.url }}?sort_by={{ collection.sort_by }}"
+                  class="active-filters__clear form-check-label"
+                  ><i class="ti-close"></i> </a
+                >clear FILTERS
+              </li>
+            {% endif %}
           </ul>
         </div>
       </div>
